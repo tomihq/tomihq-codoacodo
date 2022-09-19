@@ -16,6 +16,10 @@ b{
     position: relative;
 }
 
+.students{
+    width: fit-content;
+}
+
 .container-text-banner{
     display: flex;
     justify-content: start;
@@ -117,7 +121,17 @@ b{
         gap: 1rem;
         text-align: center;
     }
+
+    .footer-container{
+        display: flex;
+        flex-direction: column; 
+        flex-wrap: wrap;
+        gap: 1rem;
+        text-align: center;
+    
+    }
 }
+
 
 @media(min-width: 576px) and (max-width: 986px){
     .container-text-banner{
