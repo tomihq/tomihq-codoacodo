@@ -21,7 +21,6 @@ b{
     justify-content: start;
     flex-direction: column-reverse;
     position: absolute;
-    height: 50%;
     width: 50%;
     max-width: 600px;
     top: 25%;
@@ -113,24 +112,32 @@ b{
     
     .nav-container-top{
         display: flex;
-        flex-direction: column;
+       /*  flex-direction: column; */
         flex-wrap: wrap;
         gap: 1rem;
         text-align: center;
     }
 }
 
-@media(max-width: 992px){
+@media(min-width: 576px) and (max-width: 986px){
     .container-text-banner{
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    top: 0%;
-    align-items: center; 
-    left: 0;
-  
+        width: 70%;
+        left: 15vw;
+        right: 0;
+    }
+}
+
+@media(max-width: 586px){
+    .container-text-banner{
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0%;
+        align-items: center; 
+        left: 0;
+    
     }
 }
 
@@ -149,7 +156,7 @@ b{
         align-items: center;
     }
     .navbar-logo{
-        width: 80%;
+        width: 50%;
     }
 
 }
