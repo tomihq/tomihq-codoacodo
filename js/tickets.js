@@ -26,6 +26,9 @@ let clientName = document.querySelector("#clientName");
 let clientSurname = document.querySelector("#clientSurname");
 let clientEmail = document.querySelector("#clientEmail");
 
+document.querySelector("#goBack").addEventListener("click", () =>{
+    window.location = "./";
+})
 
 
 let ticketQuantityInput = document.querySelector("#ticket-quantity");
