@@ -3,6 +3,10 @@
     overflow-x: hidden; 
 }
 
+small{
+    font-size: 0.700em;
+}
+
 .btn:hover {
     background-color: inherit;
     color: #fff !important;
@@ -12,6 +16,10 @@
 p{
     padding: 0;
     margin: 0;
+}
+
+.hidden{
+    opacity: 0;
 }
 
 b{

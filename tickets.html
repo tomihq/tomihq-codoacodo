@@ -99,21 +99,23 @@
                   </section>
                   
                   <section class="d-flex flex-column flex-md-row row-md-12 justify-content-center gap-md-2 mt-4">
-                    <form class="form-ticket">
+                    <form class="form-ticket" name="form-ticket" id="form-ticket">
                       <div><p class="txt-black text-center">VENTA</p></div>
                       <div><p class="text-center"><b class="txt-black txt-md">VALOR DE TICKET $200</b></p></div>
                       <div class="ms-3 me-3 ms-md-0 me-md-0">
                       <div class="mt-2">
                           <div class="d-flex flex-column">
+                            <p>Información Personal</p>
                             <div class="form-group d-flex flex-column justify-content-between flex-md-row flex-md-wrap">
+                            
                                 <div class="col-12 col-md-6 p-1"> 
-                                    <input type="email" class="form-control" id="examenName" aria-describedby="nameHelp" placeholder="Nombre">
+                                    <input type="text" class="form-control" id="clientName" aria-describedby="nameHelp" placeholder="Nombre" >
                                 </div>
                                 <div class="col-12 col-md-6 p-1">
-                                    <input type="text" class="form-control" id="exampleSurname" aria-describedby="surnameHelp" placeholder="Apellido">
+                                    <input type="text" class="form-control" id="clientSurname" aria-describedby="surnameHelp" placeholder="Apellido" >
                                 </div>
                                 <div class="col-12 p-1 row-md-12 mt-2">
-                                    <input type="text" class="form-control" id="exampleSurname" aria-describedby="surnameHelp" placeholder="Correo">
+                                    <input type="email" class="form-control" id="clientEmail" aria-describedby="surnameHelp" placeholder="Correo" >
                                 </div>
                             </div>
                           </div>
@@ -122,12 +124,13 @@
                             <div class="form-group d-flex flex-column justify-content-between flex-md-row gap-2">
                               <div class="col-12 mt-2 mb-2 col-md-6">
                                     <label for="input-quantity" >Cantidad</label>
-                                    <input type="input-quantity" class="form-control" placeholder="Cantidad" aria-describedby="quantityHelp"/>
+                                    <input type="input-quantity" class="form-control" id="ticket-quantity" placeholder="Cantidad" aria-describedby="quantityHelp"/>
                               </div>
         
                               <div class="col-12 mt-2 mb-2 col-md-6">
                                 <label for="input-category" >Categoria</label>
                                 <select name="select-category-dropdown" id="select-category-dropdown" class="form-control">
+                                    <option value="none">Seleccione una opción</option>
                                     <option value="student">Estudiante</option>
                                     <option value="trainee">Trainee</option>
                                     <option value="junior">Junior</option>
@@ -140,12 +143,12 @@
                           <div class="bg-info p-2 border border-info rounded mt-4">
                             <div class="ms-2 text-white">
                                 <span>Total a Pagar: $</span>
-                                <span class="total-price"></span>
+                                <span class="total-price" id="total-price"></span>
                             </div>
                           </div>
                           <section class="d-flex flex-column col-12 mt-4 p-0">
-                                <button type="submit" class="btn bg-lightgreen text-light mt-2 col-12">Borrar</button>
-                                <button type="submit" class="btn bg-lightgreen text-light mt-2 col-12">Resumen</button>
+                                <button id="btnDelete" class="btn bg-lightgreen text-light mt-2 col-12">Borrar</button>
+                                <button id="btnSummary" class="btn bg-lightgreen text-light mt-2 col-12">Resumen</button>
                          
                           </section>
 
@@ -156,6 +159,16 @@
                       </div>
                      
                     </form>
+                </section>
+
+                <section  class="d-flex flex-column flex-md-row row-md-12 justify-content-center gap-md-2 mt-4 text-center">
+                  <div class="hidden" id="summary-info">
+                    Gracias por tu compra <span id="name-summary"></span> <span id="surname-summary"></span>, el total a abonar es de <b>$<b id="total-summary"></b></b>
+                  <p>
+                    <small>Le enviaremos su factura a <b id="email-summary"></b></small>
+                  </p>
+                  </div>
+
                 </section>
             </div>
 
@@ -212,6 +225,8 @@
      >Codo a Codo </a
     >
 </div>
+
+<script src="./js/tickets.js"></script>
 
 </footer>
 
