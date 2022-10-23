@@ -3,6 +3,12 @@
     overflow-x: hidden; 
 }
 
+.btn:hover {
+    background-color: inherit;
+    color: #fff !important;
+    text-decoration: none;
+}
+
 p{
     padding: 0;
     margin: 0;
@@ -14,6 +20,10 @@ b{
 
 .container-banner{
     position: relative;
+}
+
+.form-ticket{
+    width: 100%;
 }
 
 .students{
@@ -34,6 +44,8 @@ b{
 
 }
 
+
+
 .card-img-top{
     filter: brightness(0.5);
 }
@@ -50,14 +62,6 @@ b{
 .gap-2{
     gap: 2rem;
 }
-
-.btn-group-xs > .btn, .btn-xs {
-    padding: .25rem .4rem;
-    font-size: .875rem;
-    line-height: .5;
-    border-radius: .2rem;
-    overflow-y: hidden;
-  }
 
 
 .txt-green{
@@ -111,6 +115,12 @@ b{
     }  
 }
 
+@media(min-width: 992px){
+    .form-ticket{
+        width: 775px;
+    }
+}
+
 
 @media(max-width: 1200px){
     
@@ -131,6 +141,8 @@ b{
         text-align: center;
     
     }
+
+  
 }
 
 
