@@ -7,11 +7,8 @@ small{
     font-size: 0.700em;
 }
 
-.btn:hover {
-    background-color: inherit;
-    color: #fff !important;
-    text-decoration: none;
-}
+
+
 
 p{
     padding: 0;
@@ -62,6 +59,7 @@ b{
     background-color: #333a40;
 
 }
+
 
 .bg-lightgreen{
     background-color: #96c93e;
@@ -196,3 +194,4 @@ b{
     
     }
 }
+
