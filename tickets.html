@@ -17,6 +17,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css" crossorigin>
+    <link rel="stylesheet" href="./tickets.css" crossorigin>
     
 </head>
 <body>
@@ -132,6 +133,7 @@
                                 <label for="input-category" >Categoria</label>
                                 <select name="select-category-dropdown" id="select-category-dropdown" class="form-control">
                                     <option value="none">Seleccione una opción</option>
+                                    <option value="no-category">Sin Categoria</option>
                                     <option value="student">Estudiante</option>
                                     <option value="trainee">Trainee</option>
                                     <option value="junior">Junior</option>
@@ -147,9 +149,9 @@
                                 <span class="total-price" id="total-price"></span>
                             </div>
                           </div>
-                          <section class="d-flex flex-column col-12 mt-4 p-0">
-                                <button id="btnDelete" class="btn bg-success text-light mt-2 col-12">Borrar</button>
-                                <button id="btnSummary" class="btn bg-success text-light mt-2 col-12">Resumen</button>
+                          <section class="d-flex flex-column mt-4 p-0 flex-md-row container-buttons-end">
+                                <button id="btnDelete" class="btn bg-success text-light mt-2 col-md-6">Borrar</button>
+                                <button id="btnSummary" class="btn bg-success text-light mt-2 col-md-6">Resumen</button>
                          
                           </section>
 

@@ -1,6 +1,10 @@
 let ticketPrice = 200; 
 const discountsByCategory = [
     {
+        "category": "no-category",
+        "discount": 0.0
+    },
+    {
         "category": "student",
         "discount": 0.8
     },
@@ -104,6 +108,9 @@ btnDelete.addEventListener("click", () =>{
 const handleSummary = () =>{
    let found = false;
    let i = 0;
+
+  
+
    do {
      if(selectCategoryDropdown.value === discountsByCategory[i].category){
         const totalPriceQuantity = ticketPrice * ticketQuantityInput.value;
