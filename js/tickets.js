@@ -56,14 +56,7 @@ const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@
 btnSummary.addEventListener("click", () =>{
     inputValid = 0;
     inputs.forEach((input)=>{
-        if((input.type==='text' && input.value === '') || (input.type==='email' && !input.value.toLowerCase().match(emailRegex)) ){
-            input.classList.add("is-invalid");
-           
-        }else{
-            input.classList.remove("is-invalid");
-            input.classList.add("is-valid");
-            inputValid++;
-        }
+        inputValid+= handleInputChange(input);
     })
 
 
@@ -107,11 +100,21 @@ btnDelete.addEventListener("click", () =>{
 
 })
 
+const handleInputChange = (element) =>{
+    let inputValue = 0;
+    if((element.type==='text' && element.value === '') || (element.type==='email' && !element.value.toLowerCase().match(emailRegex)) ){
+        element.classList.add("is-invalid");
+    }else{
+        element.classList.remove("is-invalid");
+        element.classList.add("is-valid");
+        inputValue++;
+    }
+    return inputValue; 
+}
+
 const handleSummary = () =>{
    let found = false;
    let i = 0;
-
-  
 
    do {
      if(selectCategoryDropdown.value === discountsByCategory[i].category){
