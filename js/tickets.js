@@ -51,12 +51,14 @@ const btnSummary = document.querySelector("#btnSummary");
 let inputs = [clientName, clientEmail, clientSurname];
 let inputError = false;
 let inputValid = 0; 
+const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
 btnSummary.addEventListener("click", () =>{
     inputValid = 0;
     inputs.forEach((input)=>{
-        if(input.value === ''){
+        if((input.type==='text' && input.value === '') || (input.type==='email' && !input.value.toLowerCase().match(emailRegex)) ){
             input.classList.add("is-invalid");
-            alert("Ingrese los datos personales obligatorios por favor");
+           
         }else{
             input.classList.remove("is-invalid");
             input.classList.add("is-valid");
