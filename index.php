@@ -4,12 +4,15 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="conferencia de codo a codo con los mejores oradores, inscribite">
+    <meta name="title" content="Conferencia Codo a Codo 2022">
     <title>Codo a Codo - tomihq</title>
     
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
     />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
 
@@ -25,7 +28,11 @@
       <nav class="navbar navbar-expand-sm bg-gray">
         <div class="nav-container container-fluid justify-content-center">
           <div class="nav-container-top">
-            <img src="./img/codoacodo.png" alt="codo_a_codo_img" class="navbar-logo">
+            <picture>
+              <source  class="navbar-logo" srcset="./img/codoacodo.webp" alt="codo a codo logo" type="image/webp">
+              <img  class="navbar-logo"src="./img/codoacodo.png" alt="codo a codo logo" type="image/png"> 
+            </picture>
+          
             <a class="navbar-brand" href="#"><span class="text-light">Conf Bs As</span></a>
           </div>
           
@@ -63,7 +70,10 @@
         <div class="d-flex flex-row">
             <div class="mb-4 col col-sm mb-md-0 align-items-stretch">
               <div class="background container-banner">
-                <img src="./img/ba1.jpg" class="card-img-top" alt="html_image"/>
+                <picture>
+                  <source  class="card-img-top" srcset="./img/ba1.webp" alt="codo a codo logo" type="image/webp">
+                  <img  class="card-img-top" src="./img/ba1.jpg" alt="codo a codo logo" type="image/jpg"> 
+                </picture>
                 <div class="container-text-banner text-light">
                   
                   <div class="ms-3 mt-3 me-3 text-light gap-2">
@@ -93,7 +103,12 @@
           <div class="row justify-content-center">
             <div class="mb-4 col-sm-12 col-lg-3 mb-md-0 p-4">
               <div class="card">
-                <img src="./img/steve.jpg" class="card-img-top" alt="html_image">
+               
+                <picture>
+                  <source  class="card-img-top" srcset="./img/steve.webp" alt="steve jobs with an iphone smiling" type="image/webp">
+                  <img  class="card-img-top"src="./img/steve.jpg" alt="steve jobs with an iphone smiling" type="image/jpg" loading="lazy"> 
+                </picture>
+
                 <div class="card-body">
                   <div class="mb-1">
                     <b class="txt-black btn btn-xs btn-warning">JavaScript</b>
@@ -108,7 +123,10 @@
   
             <div class="mb-4 col-sm-12 col-lg-3 mb-md-0 p-4">
               <div class="card">
-                <img src="./img/bill.jpg" class="card-img-top" alt="css_image">
+                <picture>
+                  <source  class="card-img-top" srcset="./img/bill.webp" alt="bill gates speaking to a camera" type="image/webp">
+                  <img  class="card-img-top"src="./img/bill.jpg" alt="bill gates speaking to a camera" type="image/jpg" loading="lazy"> 
+                </picture>
                 <div class="card-body">
                   <div class="mb-1">
                     <b class="txt-black btn btn-xs btn-warning">JavaScript</b>
@@ -123,7 +141,10 @@
   
             <div class="mb-4 col-sm-12 col-lg-3 mb-md-0 p-4">
               <div class="card">
-                <img src="./img/ada.jpeg" class="card-img-top" alt="boostrap_image">
+                <picture>
+                  <source  class="card-img-top" srcset="./img/ada.webp" alt="ada lovelace picture" type="image/webp">
+                  <img  class="card-img-top"src="./img/ada.jpeg" alt="ada lovelace picture" type="image/jpeg" loading="lazy"> 
+                </picture>
                 <div class="card-body">
                   <div class="mb-1">
                     <b class="btn btn-xs bg-gray text-light">Negocios</b>
@@ -141,7 +162,10 @@
         <section class="city_info container-fluid mt-4">
           <div class="row">
             <div class="col-sm-12 col-lg-5 p-0">
-              <img class="img-fit-container" src="./img/honolulu.jpg">
+              <picture>
+                  <source  class="img-fit-container" srcset="./img/honolulu.webp" alt="beautiful beach at honolulu" type="image/webp">
+                  <img  class="img-fit-container"src="./img/honolulu.jpg" alt="beautiful beach at honolulu" type="image/jpg" loading="lazy"> 
+                </picture>
             </div>
            
             <div class="col-sm-12 col-lg-7 p-0 bg-gray">
@@ -156,7 +180,7 @@
         </section>
 
         <section class="be-speaker d-flex justify-content-center">
-            <form>
+            <form id="contact-form">
               <div class="mt-4"><p class="txt-black text-center">CONVIÉRTETE EN UN</p></div>
               <div><p class="text-center"><b class="txt-black txt-md">ORADOR</b></p></div>
               <div class="ms-3 me-3 ms-md-0 me-md-0">
@@ -166,22 +190,29 @@
                   <div class="d-flex flex-column">
                     <div class="form-group d-flex justify-content-between">
                       <div class="col-12 col-md-6 p-1"> 
-                      <input type="email" class="form-control" id="examenName" aria-describedby="nameHelp" placeholder="Nombre">
+                      <input type="text" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Nombre">
                     </div>
                     <div class="col-12 col-md-6 p-1">
-                      <input type="text" class="form-control" id="exampleSurname" aria-describedby="surnameHelp" placeholder="Apellido">
+                      <input type="text" class="form-control" id="surname" aria-describedby="surnameHelp" placeholder="Apellido">
                     </div>
+                    </div>
+                    <div class="col-12 col-md-12 p-1">
+                      <input type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email">
                     </div>
                   </div>
     
                   <div class="d-flex flex-column mt-1">
                     <div class="form-group d-flex flex-row justify-content-between">
                       <div class="col-12 p-1"> 
-                      <textarea type="text" class="form-control" id="examenName" aria-describedby="text-box-what-you-want-to-talk" placeholder="¿Sobre qué quieres hablar?"></textarea>
+                      <textarea type="text" class="form-control" id="talkAbout" aria-describedby="text-box-what-you-want-to-talk" placeholder="¿Sobre qué quieres hablar?"></textarea>
                       <small>Recuerda incluir un título para tu charla</small>
                     </div>
                   </div>
-                  <button type="submit" class="btn  bg-success   text-light mt-2">Enviar</button>
+                  <button 
+                    type="button"
+                    class="btn bg-success text-light mt-2"
+                    id="btn-form"
+                  >Enviar</button>
               </div>
               </div>
              
@@ -240,6 +271,6 @@
 
   </footer>
     <script src="https://kit.fontawesome.com/53b8f41532.js" crossorigin="anonymous"></script>
-    <script src="./js/main.js"></script>
+    <script  type="text/javascript" src="./js/main.js"></script>
   </body>
 </html>
