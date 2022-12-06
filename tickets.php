@@ -230,6 +230,7 @@
 </div>
 
 <script src="./js/tickets.js"></script>
+<script  type="text/javascript" src="./js/helpers.js"></script>
 
 </footer>
 

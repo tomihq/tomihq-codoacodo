@@ -20,6 +20,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     
   </head>
   <body>    
@@ -56,7 +58,7 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="./tickets.html"><span class="txt-green"> Comprar tickets</span></a>
+                <a class="nav-link" href="./tickets.php"><span class="txt-green"> Comprar tickets</span></a>
               </li>
 
             </ul>
@@ -188,16 +190,22 @@
               
               <div class="mt-2">
                   <div class="d-flex flex-column">
-                    <div class="form-group d-flex justify-content-between">
+                    <div class="form-group d-flex flex-column flex-md-row justify-content-between">
                       <div class="col-12 col-md-6 p-1"> 
-                      <input type="text" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Nombre">
+                      <input type="text" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Nombre"
+                      onkeyup="handleInputChange(this)"
+                      >
                     </div>
                     <div class="col-12 col-md-6 p-1">
-                      <input type="text" class="form-control" id="surname" aria-describedby="surnameHelp" placeholder="Apellido">
+                      <input type="text" class="form-control" id="surname" aria-describedby="surnameHelp" placeholder="Apellido"  
+                      onkeyup="handleInputChange(this)"
+                      >
                     </div>
                     </div>
                     <div class="col-12 col-md-12 p-1">
-                      <input type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email">
+                      <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email"
+                      onkeyup="handleInputChange(this)" 
+                      >
                     </div>
                   </div>
     
@@ -272,5 +280,6 @@
   </footer>
     <script src="https://kit.fontawesome.com/53b8f41532.js" crossorigin="anonymous"></script>
     <script  type="text/javascript" src="./js/main.js"></script>
+    <script  type="text/javascript" src="./js/helpers.js"></script>
   </body>
 </html>
