@@ -38,31 +38,7 @@ document.querySelector("#btn-form").addEventListener("click", async() =>{
         talkAbout.classList.add("is-valid");
     }
 
-   await registerUser();
+
     
 })
 
-
-const registerUser = async() =>{
-
-    await $.ajax({
-        url: './php/index.php',
-        type: 'post',
-        data: {name: name.value, surname: surname.value, email: email.value, talkAbout: talkAbout.value},
-        success: function(response){
-            const res = JSON.parse(response);
-            Swal.fire({
-                title: res.title,
-                text: res.msg,
-                confirmButtonText: 'OK'
-              })
-        }, error: function(xhr, status, error){
-            Swal.fire({
-                title: '¡Error!',
-                text: 'Algo ha salido mal, pero no te preocupes, ¡estamos arreglándolo!',
-                confirmButtonText: 'OK'
-              })
-        },
-     });
-
-}
