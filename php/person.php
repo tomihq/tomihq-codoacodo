@@ -1,5 +1,6 @@
 <?php
     class Person{
+        protected $id; 
         protected $name;
         protected $surname;
         protected $email;
@@ -15,11 +16,14 @@
         }
     
         function getPerson(){
-            $user = Array("name"=> $this->name, "surname" => $this->surname, "email" => $this->email);
+            $user = Array("id" => $this->id, "name"=> $this->name, "surname" => $this->surname, "email" => $this->email);
     
             return $user;
         }
         
+        function setID($id){
+            $this->id = $id;
+        }
     }
 
    

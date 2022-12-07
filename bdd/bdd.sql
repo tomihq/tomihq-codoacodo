@@ -16,6 +16,10 @@ CREATE TABLE event(
 )ENGINE=InnoDB;
 
 INSERT INTO event VALUES (1, "Conferencia BSAS Codo a Codo");
+INSERT INTO person VALUES (1, "Tomas", "Hernandez", "hernandeztomas584@gmail.com");
+INSERT INTO person VALUES (2, "Tomas", "Hernandez", "hernandeztomas5284@gmail.com");
+INSERT INTO person VALUES (3, "Tomas", "Hernandez", "hernandeztomas5284123@gmail.com");
+INSERT INTO person VALUES (4, "Tomas", "Hernandez", "hernandeztomas528412312@gmail.com");
 
 CREATE TABLE person_event(
     id int AUTO_INCREMENT primary key,
