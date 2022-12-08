@@ -25,11 +25,11 @@ document.querySelector("#btn-form").addEventListener("click", async() =>{
        return;  
     }
 
-    if(talkAbout.value.length<30){
+    if(talkAbout.value.length<5){
         talkAbout.classList.add("is-invalid")
         Swal.fire({
             title: '¡Oops!',
-            text: 'El motivo por el cual quieres ser un orador debe tener 30 caracteres o más.',
+            text: 'El motivo por el cual quieres ser un orador debe tener 5 caracteres o más.',
             confirmButtonText: 'OK'
           })
           return;

@@ -26,6 +26,7 @@ const prepareDeleteUsersAction = () => {
 }
 
 const deleteUser = (id) =>{
+   
     $.ajax({
         url: '../php/listaInscripcion.php',
         type: 'POST',
@@ -34,6 +35,7 @@ const deleteUser = (id) =>{
         alert('Something is wrong');
         },
         success: function(data) {
+            
             const res = JSON.parse(data);
             if(res.ok){
                 Swal.fire({

@@ -53,6 +53,7 @@ const prepareSaveUsersAction = (id, elements) =>{
             alert('Something is wrong');
         },
         success: function(data) {
+            console.log(data);
             const res = JSON.parse(data);
             if(res.ok){
                 Swal.fire({
@@ -62,7 +63,7 @@ const prepareSaveUsersAction = (id, elements) =>{
                     imageSize: '200x200',
                     confirmButtonText: 'OK'
                 }).then((result)=>{
-                    if(result.isConfirmed) window.location = "../listaInscripcion.php";
+                    if(result.isConfirmed) window.location = "listaInscripcion.php";
                 })
                 
             } 
