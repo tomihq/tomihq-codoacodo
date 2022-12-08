@@ -50,6 +50,7 @@ const registerUser = async() =>{
         type: 'post',
         data: {name: name.value, surname: surname.value, email: email.value, talkAbout: talkAbout.value},
         success: function(response){
+            
             const res = JSON.parse(response);
             Swal.fire({
                 title: res.title,

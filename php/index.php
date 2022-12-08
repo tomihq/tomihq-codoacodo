@@ -2,9 +2,8 @@
     require('conexion.php');
     require('person.php');
     require('./queries/users.php');
+    require('./queries/helpers.php');
  
-    $res = '';
-
     $name = $_POST["name"];
     $surname = $_POST["surname"];
     $email = $_POST["email"];
@@ -13,8 +12,9 @@
     $result = getUsersQuery("WHERE email=?", 'email', ["s", $email]);
     $user = $result->fetch_assoc(); 
 
-    $person = new Person(trim($name), trim($surname), $email);
-    $personObj = $person->getPerson();
+    $person = array("name" => $name, "surname"=>$surname, "email" => $email);
+
+    $personObj = userToObj($person);
 
     if(is_null($user)){
         createUserQuery($personObj, $talkAbout);   

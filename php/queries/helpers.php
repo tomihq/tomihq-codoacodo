@@ -15,7 +15,9 @@
 
     function userToObj($user){
          $person = new Person($user["name"], $user["surname"], $user["email"]);
-         $person->setID($user["id"]); 
+         if(isset($user["id"])){
+            $person->setID($user["id"]); 
+         }
          $personObj = $person->getPerson();
          return $personObj;
     }
