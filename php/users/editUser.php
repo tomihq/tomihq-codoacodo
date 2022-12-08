@@ -1,55 +1,63 @@
 
 <?php
-     require('conexion.php');
-     require('person.php');
-     require('./helpers/index.php');
-     global $stmt, $mysqli, $personsObj;
-     if(isset($_POST["id"]) && $_POST["method"]==='delete') deleteUser($_POST["id"]);
+     require('../conexion.php');
+     require('../person.php');
+     global $stmt, $mysqli, $personObj;
+     $mysqli = connection();
+
+     if(isset($_POST["method"]) && $_POST["method"] === 'put') updateUser($_POST["data"]);
 
      $res = '';
-   
-     $mysqli = connection();
-     $stmt = $mysqli -> prepare("SELECT * FROM person");
+  
+     $stmt = $mysqli -> prepare("SELECT * FROM person WHERE id='".$_GET["id"]."'");
      $stmt -> execute();
-     $users = $stmt->get_result();
-
-     $personsObj = Array();
+     $result = $stmt->get_result();
+     $user = $result->fetch_assoc(); 
      
-     foreach ($users as $key => $user) {
-         $person = new Person($user["name"], $user["surname"], $user["email"]);
-         $person->setID($user["id"]);
-         array_push($personsObj, $person->getPerson()); 
+     $person = new Person($user["name"], $user["surname"], $user["email"]);
+     $person->setID($user["id"]); 
+     $personObj = $person->getPerson();
+    
          
-     }
-
-
-
-
-
-     function deleteUser(){
+     function updateUser($data){
         global $mysqli, $stmt;
-        $id = sanitizeData($_POST["id"]);
-        try {
-            $stmt = $mysqli -> prepare("DELETE FROM person_event WHERE idPerson=?");
-            $stmt -> bind_param("s", $id);
-            $stmt->execute();
 
-            $stmt = $mysqli -> prepare("DELETE FROM person WHERE id=?");
-            $stmt -> bind_param("s", $id);
+        $id = trim($_GET["id"]);
+        $name = trim($data["name"]);
+        $surname = trim($data["surname"]);
+        $email = $data["email"];
+
+        $fields = "name=?, surname=?, email=?";
+       
+
+        try {
+            $stmt = $mysqli -> prepare("SELECT email FROM person WHERE email=?");
+            $stmt -> bind_param("s", $email);
             $stmt->execute();
-            echo json_encode(array("ok"=>true, "msg"=> "Se ha eliminado al usuario correctamente"));
+            $result = $stmt->get_result();
+            $data = $result->fetch_assoc(); 
+            
+            if(is_null($data)){
+                $stmt = $mysqli -> prepare("UPDATE person SET $fields WHERE id=?");
+                $stmt -> bind_param("ssss",$name, $surname, $email, $id);
+                $status = $stmt -> execute();
+                echo json_encode(array("ok"=>true, "title" => "¡Proceso exitoso!", "msg"=> "Se ha editado el usuario correctamente"));
+            }else{
+                echo json_encode(array("ok"=>true, "title" => "No hemos hecho nada", "msg"=> "El email ya ha sido tomado por otro usuario."));
+            }
+
         } catch (\Throwable $th) {
             //throw $th;
-            echo json_encode(array("ok"=>false, "msg"=> "Oops, algo salió mal"));
+            echo json_encode(array("ok"=>false, "title" => "No hemos hecho nada", "msg"=> "Oops, algo salió mal"));
         }
 
-        exit; 
+        exit;
+    
      }
 
-     
-     
 
 
+    
 
      $stmt -> close();
      $mysqli -> close(); 
@@ -79,7 +87,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../styles.css" crossorigin>
+    <link rel="stylesheet" href="../../styles.css" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     
@@ -88,11 +96,12 @@
 
     <header>
       <nav class="navbar navbar-expand-sm bg-gray">
+        
         <div class="nav-container container-fluid justify-content-center">
           <div class="nav-container-top">
             <picture>
-              <source  class="navbar-logo" srcset="../img/codoacodo.webp" alt="codo a codo logo" type="image/webp">
-              <img  class="navbar-logo"src="../img/codoacodo.png" alt="codo a codo logo" type="image/png"> 
+              <source  class="navbar-logo" srcset="../../img/codoacodo.webp" alt="codo a codo logo" type="image/webp">
+              <img  class="navbar-logo"src="../../img/codoacodo.png" alt="codo a codo logo" type="image/png"> 
             </picture>
           
             <a class="navbar-brand" href="#"><span class="text-light">Conf Bs As</span></a>
@@ -101,11 +110,10 @@
           <div class="collapse navbar-collapse justify-content" id="navbarSupportedContent">
             <ul class="navbar-nav mb-2 mb-lg-0 d-flex flex-row flex-wrap justify-content-between">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="../index.php"> 
+                <a class="nav-link active" aria-current="page" href="../listaInscripcion.php"> 
                   <span> <b class="text-light">Volver atrás</b> </span>
                 </a>
               </li>
-
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#"> 
                   <span> <b class="text-light">La conferencia</b> </span>
@@ -134,57 +142,29 @@
       </nav>
     </header>
 
-    <main class="main-container p-4">
-        <table class="table table-striped table-hover">
-        <thead>
-            <th>Nombre </th>
-            <th>Apellido </th>
-            <th>Email</th>
-            <th>Actions</th>
-        </thead>
-       
+    <main class="main-container p-4 d-flex flex-column justify-content-center align-items-center align-items-md-start ms-md-5">
+        <h1>Editar Usuario</h1>
 
-        <?php
-                foreach ($personsObj as $key => $person) {
-        ?>
-                     <tr>
-                       
-                        <td>  
-                            <p id="paragraph-<?php echo $person["id"] ?>">
-                                <?php echo $person["name"] ?>  
-                            </p>
-                        </td>
-
-                        <td>  
-
-                            <p id="paragraph-<?php echo $person["id"] ?>">
-                                <?php echo  $person["surname"]?>  
-                            </p>
-                        </td>
-                        
-                        <td class="w-25">  
-
-                              <p id="paragraph-<?php echo $person["id"] ?>">
-                                 <?php echo $person["email"] ?> 
-                              </p>
-                        </td>
-
-                        <td> 
-                            <div class="d-flex flex-column flex-md-row gap-2 gap-md-4">
-                                <button class="btn btn-primary modifyUser" >
-                                    <a class="text-white text-decoration-none" href="./users/editUser.php?id=<?php echo $person["id"] ?>"> Modificar </a>
-                                </button>
-                                <button class="btn btn-danger deleteUser" id="<?php echo $person["id"] ?>">Eliminar</button>
-                            </div>
-                        </td>
-                    </tr>
-                
-        <?php
-                                                         }
-        ?>
-      
-        </table>
-      
+        <section class="d-flex flex-column justify-content-center">
+        <form class="form-edituser">
+            <div>
+                <div class="form-group mt-4 col-md-12">
+                    <label for="name">Nombre</label>
+                    <input type="text" class="form-control input-lg" id="name" name="name" placeholder="Nombre" autocomplete="off" value="<?php echo $personObj["name"] ?>">
+                </div>
+                <div class="form-group mt-4">
+                    <label for="surname">Apellido</label>
+                    <input type="text" class="form-control input-lg" id="surname" name="surname" placeholder="Apellido" autocomplete="off" value="<?php echo $personObj["surname"] ?>">
+                </div>
+                <div class="form-group  mt-4">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control input-lg" id="email" name="email" placeholder="Email" value="<?php echo $personObj["email"] ?>">
+                </div>
+            </div>
+            
+        </form>
+        <button type="submit" class="btn btn-primary mt-5 saveButton" id="<?php echo $personObj["id"] ?>">Guardar</button>
+        </section>
     </main>
    
     <footer
@@ -225,6 +205,7 @@
     
   </footer>
     <script src="https://kit.fontawesome.com/53b8f41532.js" crossorigin="anonymous"></script>
-    <script  type="text/javascript" src="../js/listaInscripcion.js"></script>
+    <script  type="text/javascript" src="../../js/editUser.js"></script>
+    <script  type="text/javascript" src="../../js/helpers.js"></script>
   </body>
 </html>

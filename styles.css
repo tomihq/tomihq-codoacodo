@@ -90,6 +90,10 @@ b{
     gap: 5rem;
 }
 
+.form-edituser{
+    width: 500px !important;
+}
+
 .justify-content{
     justify-content: center;
 }
