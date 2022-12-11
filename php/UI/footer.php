@@ -16,7 +16,7 @@
             <span class="text-uppercase fw-bold">Términos y condiciones</span>
             <span class="text-uppercase fw-bold">Privacidad</span>
             <span class="text-uppercase fw-bold">Estudiantes</span>
-            <a class="text-uppercase fw-bold text-decoration-none" href="./php/listaInscripcion.php"><strong class="text-white ">Uso Interno</strong></a>
+            <a class="text-uppercase fw-bold text-decoration-none" href="/tomihq-codoacodo/php/listaInscripcion.php"><strong class="text-white ">Uso Interno</strong></a>
 
         </div>
       </div>
