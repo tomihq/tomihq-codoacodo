@@ -13,7 +13,7 @@
           <div class="collapse navbar-collapse justify-content" id="navbarSupportedContent">
             <ul class="navbar-nav mb-2 mb-lg-0 d-flex flex-row flex-wrap justify-content-between">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#"> 
+                <a class="nav-link active" aria-current="page" href="/tomihq-codoacodo/"> 
                   <span> <b class="text-light">La conferencia</b> </span>
                 </a>
               </li>

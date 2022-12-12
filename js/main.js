@@ -1,5 +1,5 @@
 document.querySelector("#buyTickets").addEventListener("click", (e) =>{
-    window.location = 'tickets.html';
+    window.location = 'tickets.php';
 })
 
 const name = document.querySelector("#name");
