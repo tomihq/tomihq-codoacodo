@@ -14,11 +14,14 @@
     $result = getUsersQuery("WHERE email=?", 'email, id', ["s", $email]);
     
     $user = $result->fetch_assoc(); 
-    $person = array($name, $surname, $email);
+    //Se le asigna una contraseña temporal al usuario.
+    $password = password_hash(123456, PASSWORD_DEFAULT);
+    $person = array($name, $surname, $email, $password, 1);
 
     
     if(is_null($user)){
-        $uuid = createUserQuery('id, name, surname, email', '?, ?, ?, ?', 'ssss', $person);  
+        
+        $uuid = createUserQuery('id, name, surname, email, password, tempPassword', '?, ?, ?, ?, ?, ?', 'sssssi', $person);  
     }else{
         $uuid = $user["id"];
        

@@ -153,6 +153,7 @@
                       <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email"
                       onkeyup="handleInputChange(this)" 
                       >
+                      <small>Si envías el formulario sin registrarte, para poder iniciar sesión <strong>ingrese el email que envíe aquí</strong> y la contraseña <strong>"123456"</strong> sin las comillas.</small>
                     </div>
                   </div>
     

@@ -7,6 +7,9 @@
 
         $result = getUsersQuery("WHERE email=?", "email, password", ["s", $email]);
         $userFound = $result->fetch_assoc(); 
+        if(is_null($userFound)){
+            return array("ok" => false, "body" => "No existe ningun usuario registrado bajo ese email");
+        }
         $passwordHashed = $userFound["password"];
 
         if(password_verify($password, $passwordHashed)){
@@ -14,9 +17,9 @@
             $payload = array('email'=>$userFound["email"], 'exp'=>(time() + 60));
             $jwt = generate_jwt($headers, $payload);
             setcookie("token", $jwt, time()+3600, "/");
-            return $jwt;
+            return array("ok" => true, "token" =>$jwt);
         }else{
-            return false;
+            return array("ok" => false, "body" => "Datos erróneos");
         }
        
 

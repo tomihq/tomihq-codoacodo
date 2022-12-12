@@ -21,7 +21,7 @@ function login(){
   $data = array("email" => $email, "password" => $password);
 
   $res = loginQuery($data);
-  print $res?json_encode(array("token" => $res)):json_encode(array("ok" => false));
+  print $res["ok"]?json_encode(array("token" => $res["token"])):json_encode(array("ok" => false, "body" => $res["body"]));
 
 
   exit;
