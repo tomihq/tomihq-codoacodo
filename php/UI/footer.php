@@ -23,7 +23,7 @@
             <span class="text-uppercase fw-bold">Contáctanos</span>
             <span class="text-uppercase fw-bold">Prensa</span>
             <span class="text-uppercase fw-bold">Conferencias</span>
-            <a class="text-uppercase fw-bold text-decoration-none" href="/tomihq-codoacodo/php/solicitudes.php"><strong class="text-white " alt="Link para iniciar sesión">Mis solicitudes como orador</strong></a>
+            <a class="text-uppercase fw-bold text-decoration-none" href="/tomihq-codoacodo/php/solicitudes.php"><strong class="text-white " alt="Link para iniciar sesión">Listado de postulaciones</strong></a>
             <a class="text-uppercase fw-bold text-decoration-none" href="/tomihq-codoacodo/php/auth/login.php"><strong class="text-white " alt="Link para iniciar sesión">Iniciar Sesión</strong></a>
             <a class="text-uppercase fw-bold text-decoration-none" id="logout-a" role="button" alt="Link para cerrar sesión"><strong class="text-white ">Cerrar Sesión</strong></a>
             <a class="text-uppercase fw-bold text-decoration-none" href="/tomihq-codoacodo/php/listaInscripcion.php"><strong class="text-white " alt="Link para ir al registro de Uso Interno">Uso Interno</strong></a>

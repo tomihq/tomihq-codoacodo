@@ -22,16 +22,23 @@ function createPersonEventQuery($data){
 }
 
 
-function getPersonDataInEvent($email){
-     
+function getPersonDataInEvent($email = ''){
+    $filter = '';
     $mysqli = connection();
     try {
-        $stmt = $mysqli -> prepare("SELECT e.name, pe.inscriptionDate, pe.inscriptionTime, pe.description
+        if(isset($email) && !empty($email)){
+            $filter = "and p.email=?";
+        }
+        $stmt = $mysqli -> prepare("SELECT e.name, CONCAT(p.name, ' ', p.surname)'personName', e.id, pe.inscriptionDate, pe.inscriptionTime, pe.description
         FROM person as p JOIN person_event as pe ON p.id = pe.idPerson JOIN event as e ON e.id = pe.idEvent
-        and p.email=?")
-        $stmt -> bind_param("s", $email);
+        $filter");
+        if(isset($email) && !empty($email)){
+            $stmt -> bind_param("s", $email);
+        }
         $stmt->execute();
-        return $stmt;
+        $personEvent = $stmt->get_result();
+        return $personEvent;
+       
     } catch (\Throwable $th) {
         echo json_encode(array("success"=>false, "title" => "Oops", "msg" => "Algo salió mal."));
     }

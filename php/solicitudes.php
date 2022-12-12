@@ -7,14 +7,18 @@
      require('./queries/helpers.php');
      require('./queries/person_event.php');
 
-     if(!isset($_COOKIE["token"]) && !$_COOKIE["token"]){
+     global $userFilter; 
+
+    /*  if(!isset($_COOKIE["token"]) && !$_COOKIE["token"]){
         header('Location: /tomihq-codoacodo/');
         die();
+      } */
+
+      if(isset($_GET["email"])){
+        $userFilter = $_GET["email"];
       }
 
-     $data = getPersonDataInEvent('hernandeztomas584@gmail.com');
-     var_dump($data);
-
+     $eventsFound = getPersonDataInEvent($userFilter);
    
 
 ?>
@@ -40,36 +44,55 @@
         <table class="table table-striped table-hover">
         <thead>
             <th>Nombre del Evento </th>
+            <th>Postulante</th>
+            <th>Descripción</th>
             <th>Fecha de Postulación </th>
             <th>Hora de Postulación </th>
+           
            
         </thead>
        
 
         <?php
-                foreach ($personsObj as $key => $person) {
+                foreach ($eventsFound as $key => $event) {
         ?>
                      <tr>
                        
                         <td>  
-                            <p id="paragraph-<?php echo $person["id"] ?>">
-                                <?php echo $person["name"] ?>  
+                            <p id="paragraph-<?php echo $event["id"] ?>">
+                                <?php echo $event["name"] ?>  
                             </p>
+                        </td>
+
+                         <td class="w-25">  
+
+                              <p id="paragraph-<?php echo $event["id"] ?>">
+                              <?php echo  $event["personName"]?>  
+                              </p>
+                        </td>
+
+                         <td class="w-25">  
+
+                              <p id="paragraph-<?php echo $event["id"] ?>">
+                              <?php echo  $event["description"]?>  
+                              </p>
                         </td>
 
                         <td>  
 
-                            <p id="paragraph-<?php echo $person["id"] ?>">
-                                <?php echo  $person["surname"]?>  
+                            <p id="paragraph-<?php echo $event["id"] ?>">
+                                <?php echo  $event["inscriptionDate"]?>  
                             </p>
                         </td>
                         
                         <td class="w-25">  
 
-                              <p id="paragraph-<?php echo $person["id"] ?>">
-                                 <?php echo $person["email"] ?> 
+                              <p id="paragraph-<?php echo $event["id"] ?>">
+                              <?php echo  $event["inscriptionTime"]?>  
                               </p>
                         </td>
+
+                       
 
                        
                     </tr>
