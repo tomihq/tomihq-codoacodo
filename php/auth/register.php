@@ -7,13 +7,10 @@
     require('../queries/auth.php');
     require('../helpers/index.php');
 
-
-
-
     if(isset($_POST["method"]) && $_POST["method"]==='addUser') createUser();
 
     function createUser(){
-      $email = $_POST["email"];
+      $email = strtolower($_POST["email"]);
       $password = $_POST["password"];
       $confirmPassword = $_POST["confirmPassword"];
 
