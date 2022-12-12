@@ -6,6 +6,7 @@ const name = document.querySelector("#name");
 const surname = document.querySelector("#surname");
 const email = document.querySelector("#email");
 const talkAbout = document.querySelector("#talkAbout");
+const logoutLink = document.querySelector("#logout-a");
 
 document.querySelector("#btn-form").addEventListener("click", async() =>{
     const inputs = [name, surname, email]
@@ -41,6 +42,37 @@ document.querySelector("#btn-form").addEventListener("click", async() =>{
    await registerUser();
     
 })
+
+logoutLink.addEventListener(("click"), () =>{
+    logout();
+})
+
+const logout = async() =>{
+    let token = localStorage.getItem("token");
+    if(token){
+        await $.ajax({
+            url: './php/auth/logout.php',
+            type: 'post',
+            data: {name: name.value, surname: surname.value, email: email.value, talkAbout: talkAbout.value},
+            success: function(response){
+                console.log(response);
+                const res = JSON.parse(response);
+                if(res.ok){
+                    localStorage.removeItem("token");
+                }
+               
+            }, error: function(xhr, status, error){
+                Swal.fire({
+                    title: '¡Error!',
+                    text: 'Algo ha salido mal, pero no te preocupes, ¡estamos arreglándolo!',
+                    confirmButtonText: 'OK'
+                  })
+            },
+         });
+    }
+
+   
+}
 
 
 const registerUser = async() =>{

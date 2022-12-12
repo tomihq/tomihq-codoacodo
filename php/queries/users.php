@@ -2,7 +2,7 @@
 require(__DIR__ .'/../uuid.php');
 
 function createUserQuery($fields, $paramsAmount, $bindParams, $person){
-    $mysqli = connection();
+        $mysqli = connection();
 
         $uuid = UUID::v4();
         $stmt = $mysqli -> prepare("INSERT INTO person ($fields) 

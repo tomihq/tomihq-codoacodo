@@ -1,7 +1,30 @@
 
 <?php
 
-   
+require('../conexion.php');
+require('../person.php');
+include('../queries/auth.php');
+require('../helpers/index.php');
+
+if(isset($_COOKIE["token"]) && $_COOKIE["token"]){
+  header('Location: /tomihq-codoacodo/');
+  die();
+}
+
+if(isset($_POST["method"]) && $_POST["method"]==='login') login();
+
+function login(){
+
+  $email = $_POST["email"];
+  $password = $_POST["password"];
+  $data = array("email" => $email, "password" => $password);
+
+  $res = loginQuery($data);
+  print $res?json_encode(array("token" => $res)):json_encode(array("ok" => false));
+
+
+  exit;
+}
 
 ?>
 
@@ -35,11 +58,41 @@
 
      <?php require("../UI/header.php") ?>
 
-    <main class="main-container p-4">
+    <main class="main-container p-4 bg-dark text-center">
+      <h1 class="px-5 font-bold text-white">CODO A CODO</h1>
+      <h2 class="px-5 font-weight-bold text-white mb-5">Inicie sesión</h2>
+      <section class="d-flex flex-column flex-md-row px-5 p-md-5  justify-content-center align-items-center gap-4">
+        <div >
+            <picture>
+              <source srcset="../../img/cat.webp" type="type/webp">
+              <img src="../../img/cat.jpg" class="img-fluid" alt="cat with blue eyes looking the camera" width="400" height="400">
+        </div>
+
+        <form id="register-form" class="mt-2 ms-md-4 px-md-4 mt-md-0 text-start">
+            <h3 class="text-white mb-4 font-weight-bold">Ingrese sus datos</h3>
+            <div class="form-group row mb-4 text-white">
+                <label for="inputEmail3" class="col-sm-4 col-form-label">Email</label>
+                <div class="col-sm-8 d-flex justify-content-center align-items-center">
+                <input type="email" class="form-control" id="email" placeholder="Email" onkeyup="handleInputChange(this)" >
+                </div>
+            </div>
+            <div class="form-group row mb-4 text-white">
+                <label for="inputPassword3" class="col-sm-4 col-form-label">Contraseña</label>
+                <div class="col-sm-8 d-flex flex-column gap-2 justify-content-center align-items-center">
+                  <input type="password" class="form-control" id="password" placeholder="Contraseña" >
+                  
+                </div>
+            </div>
+            
+            
+            <div class="col-sm-10 d-flex justify-content-center align-items-center mt-5 mt-md-0">
+              <button type="button" class="btn btn-primary w-50 ms-md-5" id="button-login">Iniciar Sesión</button>
+            </div>
+        </form>
+
+        <a href="./register.php">Registrarse</a>
     
-        <section>
-            <a href="./register.php">¿No tienes una cuenta? Regístrate aquí</a>
-        </section>
+      </section>
       
     </main>
    
@@ -47,6 +100,7 @@
               require('../UI/footer.php');                                          
     ?>
     <script src="https://kit.fontawesome.com/53b8f41532.js" crossorigin="anonymous"></script>
-  <!--   <script  type="text/javascript" src="../js/listaInscripcion.js"></script> -->
+    <script type="text/javascript" src="../../js/auth/login.js"></script> 
+    <script type="text/javascript" src="../../js/helpers.js"></script> 
   </body>
 </html>
