@@ -66,7 +66,8 @@ function login(){
         <div >
             <picture>
               <source srcset="../../img/cat.webp" type="type/webp">
-              <img src="../../img/cat.jpg" class="img-fluid" alt="cat with blue eyes looking the camera" width="400" height="400">
+              <img src="../../img/cat.jpg" class="img-fluid" alt="cat with blue eyes looking the camera" width="400" height="400" sizes="(min-width: 60rem) 80vw" type="type/jpg">
+              
         </div>
 
         <form id="register-form" class="mt-2 ms-md-4 px-md-4 mt-md-0 text-start">

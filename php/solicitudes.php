@@ -108,7 +108,7 @@
     <?php
               require('./UI/footer.php');                                          
     ?>
-    <script src="https://kit.fontawesome.com/53b8f41532.js" crossorigin="anonymous"></script>
-    <script  type="text/javascript" src="../js/misSolicitudes.js"></script>
+
+  
   </body>
 </html>
