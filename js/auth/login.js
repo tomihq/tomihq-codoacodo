@@ -37,12 +37,17 @@ const login = async() =>{
         type: 'post',
         data: {method: 'login', email: email.value, password: password.value},
         success: function(response){
-
             const res = JSON.parse(response);
             if(res.body.token){
                 localStorage.setItem("token", JSON.stringify(res.token));
                 window.location.href = res.body.tempPassword==1?"/tomihq-codoacodo/php/auth/changePassword.php":"/tomihq-codoacodo/";
                  
+            }else{
+                Swal.fire({
+                    title: '¡Error!',
+                    text: res.body,
+                    confirmButtonText: 'OK'
+                  })
             }
             
         }, error: function(xhr, status, error){
