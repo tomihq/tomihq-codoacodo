@@ -4,7 +4,9 @@
     require('../conexion.php');
     require('../person.php');
     require('../queries/users.php');
+    require('../queries/auth.php');
     require('../helpers/index.php');
+
 
 
 
@@ -15,7 +17,7 @@
       $password = $_POST["password"];
       $confirmPassword = $_POST["confirmPassword"];
 
-      if($password !== $confirmPassword){
+      if(strcmp($password, $confirmPassword) !== 0){
         echo json_encode(array("success" => true,"title"=>"¡Error!", "msg" => "Las contraseñas no coinciden."));
         exit;
       }
@@ -35,7 +37,10 @@
       if(is_null($user)){
           $uuid = createUserQuery('id, email, password', '?, ?, ?', 'sss', $person);   
           if(!is_null($uuid)) {
-            echo json_encode(array("success" => true,"title"=>"¡Atención!", "msg" => "Te has registrado satisfactoriamente."));
+            $data = array("email" => $email, "password" => $password);
+            $res = loginQuery($data);
+            print $res?json_encode(array("token" => $res, "success" => true,"title"=>"¡Atención!", "msg" => "Te has registrado satisfactoriamente.")):json_encode(array("ok" => false));
+
             exit;
           }
           

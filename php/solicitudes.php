@@ -5,20 +5,15 @@
      require('./helpers/index.php');
      require('./queries/users.php');
      require('./queries/helpers.php');
+     require('./queries/person_event.php');
 
-     global $personsObj;
-     if(isset($_POST["id"]) && $_POST["method"]==='delete') deleteUser($_POST["id"]);
+     if(!isset($_COOKIE["token"]) && !$_COOKIE["token"]){
+        header('Location: /tomihq-codoacodo/');
+        die();
+      }
 
-     $res = '';
-  
-     $persons = getUsersQuery();
-     $personsObj = usersToObj($persons);
-    
-     function deleteUser(){
-        $id = $_POST["id"];
-        deleteUserQuery($id);
-        exit;
-     }
+     $data = getPersonDataInEvent('hernandeztomas584@gmail.com');
+     var_dump($data);
 
    
 
@@ -44,10 +39,10 @@
     <main class="main-container p-4">
         <table class="table table-striped table-hover">
         <thead>
-            <th>Nombre </th>
-            <th>Apellido </th>
-            <th>Email</th>
-            <th>Actions</th>
+            <th>Nombre del Evento </th>
+            <th>Fecha de Postulación </th>
+            <th>Hora de Postulación </th>
+           
         </thead>
        
 
@@ -76,14 +71,7 @@
                               </p>
                         </td>
 
-                        <td> 
-                            <div class="d-flex flex-column flex-md-row gap-2 gap-md-4">
-                                <button class="btn btn-primary modifyUser" >
-                                    <a class="text-white text-decoration-none" href="./editUser.php?id=<?php echo $person["id"] ?>"> Modificar </a>
-                                </button>
-                                <button class="btn btn-danger deleteUser" id="<?php echo $person["id"] ?>">Eliminar</button>
-                            </div>
-                        </td>
+                       
                     </tr>
                 
         <?php
@@ -98,6 +86,6 @@
               require('./UI/footer.php');                                          
     ?>
     <script src="https://kit.fontawesome.com/53b8f41532.js" crossorigin="anonymous"></script>
-    <script  type="text/javascript" src="../js/listaInscripcion.js"></script>
+    <script  type="text/javascript" src="../js/misSolicitudes.js"></script>
   </body>
 </html>

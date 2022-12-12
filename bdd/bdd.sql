@@ -13,10 +13,11 @@ CREATE TABLE person(
 
 CREATE TABLE event(
     id int AUTO_INCREMENT primary key,
-    name varchar(40) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
+    name varchar(40) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+    date DATE
 )ENGINE=InnoDB;
 
-INSERT INTO event VALUES (1, "Conferencia BSAS Codo a Codo");
+INSERT INTO event VALUES (1, "Conferencia BSAS Codo a Codo", "2022-12-12");
 INSERT INTO person VALUES (1, "Tomas", "Hernandez", "hernandeztomas584@gmail.com", "123456");
 INSERT INTO person VALUES (2, "Tomas", "Hernandez", "hernandeztomas5284@gmail.com", "123456");
 INSERT INTO person VALUES (3, "Tomas", "Hernandez", "hernandeztomas5284123@gmail.com", "123456");
@@ -26,9 +27,11 @@ CREATE TABLE person_event(
     id int AUTO_INCREMENT primary key,
     idPerson varchar(250),
     idEvent int,
+    inscriptionDate DATE,
+    inscriptionTime TIME,
     description varchar(120) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
     FOREIGN KEY (idPerson) REFERENCES person(id),
     FOREIGN KEY (idEvent) REFERENCES event(id)
 )ENGINE=InnoDB;
 
-
+INSERT INTO person_event VALUES (1, 1, 1, "2022-12-12", "14:07:01", "Me encantaria hablar acerca de TypeScript");

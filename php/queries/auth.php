@@ -1,7 +1,5 @@
 <?php
-
-    require('users.php');
-   
+ 
 
     function loginQuery($data){
         $email = $data["email"];

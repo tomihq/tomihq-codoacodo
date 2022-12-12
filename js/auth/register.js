@@ -18,6 +18,15 @@ const prepareSubmitEvent = () =>{
         inputs.forEach((input)=>{
             inputValid += handleInputChange(input);
         })
+
+        if(password.value !== confirmPassword.value){
+            Swal.fire({
+                title: '¡Oops!',
+                text: 'Las contraseñas no coinciden',
+                confirmButtonText: 'OK'
+              })
+              return;
+        }
     
 
         if(inputValid !== inputs.length){
@@ -34,19 +43,20 @@ const prepareSubmitEvent = () =>{
 }
 
 const registerUser = async() =>{
+    
     await $.ajax({
         url: '../auth/register.php',
         type: 'post',
         data: {method: 'addUser', email: email.value, password: password.value, confirmPassword: confirmPassword.value},
         success: function(response){
-            console.log(response);
             
             const res = JSON.parse(response);
-            Swal.fire({
-                title: res.title,
-                text: res.msg,
-                confirmButtonText: 'OK'
-              })
+            if(res.token){
+                localStorage.setItem("token", JSON.stringify(res.token));
+                 window.location.href = "/tomihq-codoacodo/";
+            }
+           
+              window.location.href = "/tomihq-codoacodo/";
         }, error: function(xhr, status, error){
             Swal.fire({
                 title: '¡Error!',

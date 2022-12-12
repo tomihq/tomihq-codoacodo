@@ -3,7 +3,8 @@
 
 require('../conexion.php');
 require('../person.php');
-include('../queries/auth.php');
+require('../queries/users.php');
+require('../queries/auth.php');
 require('../helpers/index.php');
 
 if(isset($_COOKIE["token"]) && $_COOKIE["token"]){
@@ -101,6 +102,6 @@ function login(){
     ?>
     <script src="https://kit.fontawesome.com/53b8f41532.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="../../js/auth/login.js"></script> 
-    <script type="text/javascript" src="../../js/helpers.js"></script> 
+
   </body>
 </html>

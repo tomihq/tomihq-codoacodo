@@ -23,10 +23,10 @@
             <span class="text-uppercase fw-bold">Contáctanos</span>
             <span class="text-uppercase fw-bold">Prensa</span>
             <span class="text-uppercase fw-bold">Conferencias</span>
-            <span class="text-uppercase fw-bold">Términos y condiciones</span>
-            <a class="text-uppercase fw-bold text-decoration-none" href="/tomihq-codoacodo/php/auth/login.php"><strong class="text-white ">Iniciar Sesión</strong></a>
-            <a class="text-uppercase fw-bold text-decoration-none" id="logout-a"><strong class="text-white ">Cerrar Sesión</strong></a>
-            <a class="text-uppercase fw-bold text-decoration-none" href="/tomihq-codoacodo/php/listaInscripcion.php"><strong class="text-white ">Uso Interno</strong></a>
+            <a class="text-uppercase fw-bold text-decoration-none" href="/tomihq-codoacodo/php/solicitudes.php"><strong class="text-white " alt="Link para iniciar sesión">Mis solicitudes como orador</strong></a>
+            <a class="text-uppercase fw-bold text-decoration-none" href="/tomihq-codoacodo/php/auth/login.php"><strong class="text-white " alt="Link para iniciar sesión">Iniciar Sesión</strong></a>
+            <a class="text-uppercase fw-bold text-decoration-none" id="logout-a" role="button" alt="Link para cerrar sesión"><strong class="text-white ">Cerrar Sesión</strong></a>
+            <a class="text-uppercase fw-bold text-decoration-none" href="/tomihq-codoacodo/php/listaInscripcion.php"><strong class="text-white " alt="Link para ir al registro de Uso Interno">Uso Interno</strong></a>
 
         </div>
 
@@ -46,6 +46,9 @@
          >Codo a Codo </a
         >
     </div>
+
+    <script type="text/javascript" src="/tomihq-codoacodo/js/helpers.js"></script> 
+    <script type="text/javascript" src="/tomihq-codoacodo/js/ui/footer.js"></script> 
     
 
   </footer>
