@@ -1,5 +1,50 @@
 
 <?php
+  
+    require('../conexion.php');
+    require('../person.php');
+    require('../queries/users.php');
+    require('../helpers/index.php');
+    if(isset($_POST["method"]) && $_POST["method"]==='addUser') createUser();
+
+    function createUser(){
+      $email = $_POST["email"];
+      $password = $_POST["password"];
+      $confirmPassword = $_POST["confirmPassword"];
+
+      if($password !== $confirmPassword){
+        echo json_encode(array("success" => true,"title"=>"¡Error!", "msg" => "Las contraseñas no coinciden."));
+        exit;
+      }
+
+
+      if(!validatePassword($password)){
+        echo json_encode(array("success" => true,"title"=>"¡Error!", "msg" => "La contraseña no es valida"));
+        exit;
+      }
+
+      $result = getUsersQuery("WHERE email=?", 'email', ["s", $email]);
+      $user = $result->fetch_assoc(); 
+  
+      $person = array($email, password_hash($password, PASSWORD_DEFAULT));
+
+  
+      if(is_null($user)){
+          $uuid = createUserQuery('id, email, password', '?, ?, ?', 'sss', $person);   
+          if(!is_null($uuid)) {
+            echo json_encode(array("success" => true,"title"=>"¡Atención!", "msg" => "Te has registrado satisfactoriamente."));
+            exit;
+          }
+          
+          
+      }else{
+          echo json_encode(array("success" => true,"title"=>"¡Atención!", "msg" => "El email ya se encuentra en uso."));
+          exit;
+      }
+      exit;
+  
+
+    }
 
    
 
@@ -11,7 +56,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="conferencia de codo a codo con los mejores oradores, inscribite">
+    <meta name="description" content="conferencia de codo a codo con los mejores oradores, regístrate y obtén jugosos beneficios.">
     <meta name="title" content="Conferencia Codo a Codo 2022">
     <title>Registrarse</title>
     
@@ -28,41 +73,51 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../styles.css" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     
   </head>
   <body>    
 
      <?php require("../UI/header.php") ?>
 
-    <main class="main-container p-4">
-    <form class="p-5">
-        <div class="form-group row mb-4">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-5">
-            <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-            </div>
+    <main class="main-container p-4 bg-dark text-center">
+      <h1 class="px-5 font-bold text-white">CODO A CODO</h1>
+      <h2 class="px-5 font-weight-bold text-white mb-5">Regístrese y obtenga beneficios.</h2>
+      <section class="d-flex flex-column flex-md-row px-5 p-md-5  justify-content-center align-items-center gap-4">
+        <div >
+            <picture>
+              <source srcset="../../img/cat.webp" type="type/webp">
+              <img src="../../img/cat.jpg" class="img-fluid" alt="cat with blue eyes looking the camera" width="400" height="400">
         </div>
-        <div class="form-group row mb-4">
-            <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
-            <div class="col-sm-5">
-            <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-            <small>*Debe incluir de 8 a 20 carácteres, incluir 1 mayúscula, 1 número y 1 caractér especial.</small>
+
+        <form id="register-form" class="mt-2 ms-md-4 px-md-4 mt-md-0 text-start">
+            <h3 class="text-white mb-4 font-weight-bold">Ingrese sus datos</h3>
+            <div class="form-group row mb-4 text-white">
+                <label for="inputEmail3" class="col-sm-3 col-form-label">Email</label>
+                <div class="col-sm-8 d-flex justify-content-center align-items-center">
+                <input type="email" class="form-control" id="email" placeholder="Email" onkeyup="handleInputChange(this)" >
+                </div>
             </div>
-        </div>
-        <div class="form-group row mb-4">
-            <label for="inputPassword3" class="col-sm-2 col-form-label">Confirm Password</label>
-            <div class="col-sm-5">
-            <input type="password" class="form-control" id="inputPassword3" placeholder="Confirm Password">
+            <div class="form-group row mb-4 text-white">
+                <label for="inputPassword3" class="col-sm-3 col-form-label">Contraseña</label>
+                <div class="col-sm-8 d-flex flex-column gap-2 justify-content-center align-items-center">
+                  <input type="password" class="form-control" id="password" placeholder="Contraseña" onkeyup="handleInputChange(this)" >
+                  <small>*Debe incluir de 8 a 20 carácteres, incluir 1 mayúscula, 1 número y 1 caractér especial.</small>
+                </div>
             </div>
-        </div>
-        
-        <div class="form-group row">
-            <div class="col-sm-10">
-            <button type="submit" class="btn btn-primary" onclick="<?php echo "Hola"?>">Registrarse</button>
+            <div class="form-group row mb-4 text-white">
+                <label for="inputPassword3" class="col-sm-3 col-form-label">Reingrese Contraseña</label>
+                <div class="col-sm-8 d-flex justify-content-center align-items-center">
+                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirmar Contraseña" onkeyup="handleInputChange(this)">
+                </div>
             </div>
-        </div>
-    </form>
+            
+                <div class="col-sm-10 d-flex justify-content-center align-items-center mt-5 mt-md-0">
+                  <button type="button" class="btn btn-primary w-50 ms-md-5" id="button-submit">Registrarse</button>
+                </div>
+        </form>
+    
+      </section>
       
     </main>
    
@@ -70,6 +125,7 @@
               require('../UI/footer.php');                                          
     ?>
     <script src="https://kit.fontawesome.com/53b8f41532.js" crossorigin="anonymous"></script>
-  <!--   <script  type="text/javascript" src="../js/listaInscripcion.js"></script> -->
+    <script type="text/javascript" src="../../js/auth/register.js"></script> 
+    <script type="text/javascript" src="../../js/helpers.js"></script> 
   </body>
 </html>

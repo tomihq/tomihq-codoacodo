@@ -4,7 +4,7 @@
           <div class="nav-container-top">
             <picture>
               <source  class="navbar-logo" srcset="../img/codoacodo.webp" alt="codo a codo logo" type="image/webp">
-              <img  class="navbar-logo"src="../img/codoacodo.png" alt="codo a codo logo" type="image/png"> 
+              <img  class="navbar-logo" src="../img/codoacodo.png" alt="codo a codo logo" type="image/png"> 
             </picture>
           
             <a class="navbar-brand" href="#"><span class="text-light">Conf Bs As</span></a>
@@ -44,4 +44,4 @@
           </div>
         </div>
       </nav>
-    </header>
+</header>

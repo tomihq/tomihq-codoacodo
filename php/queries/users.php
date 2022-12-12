@@ -1,29 +1,16 @@
 <?php
-require('uuid.php');
+require(__DIR__ .'/../uuid.php');
 
-function createUserQuery($person, $talkAbout){
+function createUserQuery($fields, $paramsAmount, $bindParams, $person){
     $mysqli = connection();
-    try {
+
         $uuid = UUID::v4();
-        $stmt = $mysqli -> prepare("INSERT INTO person (id, name, surname, email) 
-        VALUES (?, ?, ?, ?)");
-        $stmt -> bind_param("ssss", $uuid, $person["name"], $person["surname"], $person["email"]);
+        $stmt = $mysqli -> prepare("INSERT INTO person ($fields) 
+        VALUES ($paramsAmount)");
+        $stmt -> bind_param($bindParams, $uuid, ...$person);
         $stmt->execute();
 
-        $stmt = $mysqli -> prepare("INSERT INTO person_event (idPerson, idEvent, description)
-        VALUES (?, ?, ?)");
-        $event = 1; 
-        $stmt -> bind_param("sis", $uuid, $event, $talkAbout);
-        $stmt->execute();
-
-        echo json_encode(array("success" => true, "title"=> "¡Proceso realizado con éxito!", "msg" => "Hemos recibido tu solicitud. ¡Gracias!"));
-    } catch (\Throwable $th) {
-        
-        echo json_encode(array("success"=>false, "title" => "Oops", "msg" => "Algo salió mal."));
-
-    }
-    $stmt -> close();
-    $mysqli -> close();
+        return $uuid;
 
 }
 
