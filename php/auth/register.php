@@ -96,14 +96,14 @@
         <form id="register-form" class="mt-2 ms-md-4 px-md-4 mt-md-0 text-start">
             <h3 class="text-white mb-4 font-weight-bold">Ingrese sus datos</h3>
             <div class="form-group row mb-4 text-white">
-                <label for="inputEmail3" class="col-sm-5 col-form-label">Email</label>
+                <label for="inputEmail3" class="col-sm-3 col-form-label">Email</label>
                 <div class="col-sm-7 d-flex justify-content-center align-items-center">
                 <input type="email" class="form-control" id="email" placeholder="Email" onkeyup="handleInputChange(this)" >
                 </div>
             </div>
             <div class="form-group row mb-4 text-white">
-                <label for="inputPassword3" class="col-sm-5 col-form-label">Contraseña</label>
-                <div class="col-sm-8 d-flex flex-column gap-2 justify-content-center align-items-center">
+                <label for="inputPassword3" class="col-sm-3 col-form-label">Contraseña</label>
+                <div class="col-sm-7 d-flex flex-column gap-2 justify-content-center align-items-center">
                   <input type="password" class="form-control" id="password" placeholder="Contraseña" onkeyup="handleInputChange(this)" >
                   <small>*Debe incluir de 8 a 20 carácteres, incluir 1 mayúscula, 1 número y 1 caractér especial.</small>
                 </div>

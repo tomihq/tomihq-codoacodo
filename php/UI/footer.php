@@ -3,6 +3,16 @@
           style="background-color: #1c2331"
           >
   
+    <section
+             class="d-flex justify-content-between p-4"
+             style="background-color: #6351ce"
+             >
+
+      <div class="me-5">
+        <span>Información adicional:</span>
+      </div>
+   
+    </section>
 
 
     <section class="footer">
@@ -14,11 +24,14 @@
             <span class="text-uppercase fw-bold">Prensa</span>
             <span class="text-uppercase fw-bold">Conferencias</span>
             <span class="text-uppercase fw-bold">Términos y condiciones</span>
-            <span class="text-uppercase fw-bold">Privacidad</span>
-            <span class="text-uppercase fw-bold">Estudiantes</span>
+            <a class="text-uppercase fw-bold text-decoration-none" href="/tomihq-codoacodo/php/auth/login.php"><strong class="text-white ">Iniciar Sesión</strong></a>
+            <a class="text-uppercase fw-bold text-decoration-none" id="logout-a"><strong class="text-white ">Cerrar Sesión</strong></a>
             <a class="text-uppercase fw-bold text-decoration-none" href="/tomihq-codoacodo/php/listaInscripcion.php"><strong class="text-white ">Uso Interno</strong></a>
 
         </div>
+
+       
+
       </div>
    
       </div>
@@ -34,4 +47,5 @@
         >
     </div>
     
+
   </footer>

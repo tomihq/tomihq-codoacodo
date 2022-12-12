@@ -1,14 +1,12 @@
 <?php 
-
     if(isset($_COOKIE["token"])){
         unset($_COOKIE['token']);
-        setcookie('token', '', time() - 3600, '/'); 
-        header('Location: /tomihq-codoacodo/');
+        setcookie("token", '', 1, "/");
         echo json_encode(array("ok" => true));
         exit;
     }
 
     echo json_encode(array("ok" => false));
-    exit;
+    die();
 
 ?>

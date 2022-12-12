@@ -26,47 +26,7 @@
   </head>
   <body>    
 
-    <header>
-      <nav class="navbar navbar-expand-sm bg-gray">
-        <div class="nav-container container-fluid justify-content-center">
-          <div class="nav-container-top">
-            <picture>
-              <source  class="navbar-logo" srcset="./img/codoacodo.webp" alt="codo a codo logo" type="image/webp">
-              <img  class="navbar-logo"src="./img/codoacodo.png" alt="codo a codo logo" type="image/png"> 
-            </picture>
-          
-            <a class="navbar-brand" href="#"><span class="text-light">Conf Bs As</span></a>
-          </div>
-          
-          <div class="collapse navbar-collapse justify-content" id="navbarSupportedContent">
-            <ul class="navbar-nav mb-2 mb-lg-0 d-flex flex-row flex-wrap justify-content-between">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#"> 
-                  <span> <b class="text-light">La conferencia</b> </span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">  <span class="text-light">Los oradores</span></a>
-              </li>
-             
-              <li class="nav-item">
-                <a class="nav-link" href="#"><span class="text-light"> El lugar y la fecha</span></a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="#"><span class="text-light"> Conviértete en orador</span></a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="./tickets.php"><span class="txt-green"> Comprar tickets</span></a>
-              </li>
-
-            </ul>
-           
-          </div>
-        </div>
-      </nav>
-    </header>
+    <?php require('./php/UI/header.php'); ?>
 
     <main class="main-container">
         <div class="d-flex flex-row">
@@ -228,57 +188,8 @@
         </section>
     </main>
    
-    <footer
-          class="text-center text-lg-start text-white mt-5"
-          style="background-color: #1c2331"
-          >
-  
-    <section
-             class="d-flex justify-content-between p-4"
-             style="background-color: #6351ce"
-             >
-
-      <div class="me-5">
-        <span>Información adicional:</span>
-      </div>
+    <?php require('./php/UI/footer.php'); ?>
    
-    </section>
-
-
-    <section class="footer">
-      <div class="container-fluid mt-4  mb-4  text-center">
-           <div class="container-fluid d-flex justify-content-between align-items-center p-0 text-center container-sm footer-container" >
-        
-            <span class="text-uppercase fw-bold">Preguntas Frecuentes</span>
-            <span class="text-uppercase fw-bold">Contáctanos</span>
-            <span class="text-uppercase fw-bold">Prensa</span>
-            <span class="text-uppercase fw-bold">Conferencias</span>
-            <span class="text-uppercase fw-bold">Términos y condiciones</span>
-            <a class="text-uppercase fw-bold text-decoration-none" href="./php/auth/login.php"><strong class="text-white ">Iniciar Sesión</strong></a>
-            <a class="text-uppercase fw-bold text-decoration-none" id="logout-a"><strong class="text-white ">Cerrar Sesión</strong></a>
-            <a class="text-uppercase fw-bold text-decoration-none" href="./php/listaInscripcion.php"><strong class="text-white ">Uso Interno</strong></a>
-
-        </div>
-
-       
-
-      </div>
-   
-      </div>
-    </section>
-  
-    <div
-         class="text-center p-3"
-         style="background-color: rgba(0, 0, 0, 0.2)"
-         >
-      © 2022 Tomás Hernández:
-      <a class="text-white" href="#"
-         >Codo a Codo </a
-        >
-    </div>
-    
-
-  </footer>
     <script src="https://kit.fontawesome.com/53b8f41532.js" crossorigin="anonymous"></script>
     <script  type="text/javascript" src="./js/main.js"></script>
     <script  type="text/javascript" src="./js/helpers.js"></script>

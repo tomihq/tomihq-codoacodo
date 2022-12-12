@@ -15,7 +15,7 @@
             $headers = array('alg'=>'HS256','typ'=>'JWT');
             $payload = array('email'=>$userFound["email"], 'exp'=>(time() + 60));
             $jwt = generate_jwt($headers, $payload);
-            setcookie("token", $jwt, time()+3600);
+            setcookie("token", $jwt, time()+3600, "/");
             return $jwt;
         }else{
             return false;

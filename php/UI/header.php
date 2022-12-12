@@ -3,8 +3,8 @@
         <div class="nav-container container-fluid justify-content-center">
           <div class="nav-container-top">
             <picture>
-              <source  class="navbar-logo" srcset="../img/codoacodo.webp" alt="codo a codo logo" type="image/webp">
-              <img  class="navbar-logo" src="../img/codoacodo.png" alt="codo a codo logo" type="image/png"> 
+              <source  class="navbar-logo" srcset="/tomihq-codoacodo/img/codoacodo.webp" alt="codo a codo logo" type="image/webp">
+              <img  class="navbar-logo"src="/tomihq-codoacodo/img/codoacodo.png" alt="codo a codo logo" type="image/png"> 
             </picture>
           
             <a class="navbar-brand" href="#"><span class="text-light">Conf Bs As</span></a>
@@ -12,12 +12,6 @@
           
           <div class="collapse navbar-collapse justify-content" id="navbarSupportedContent">
             <ul class="navbar-nav mb-2 mb-lg-0 d-flex flex-row flex-wrap justify-content-between">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="../index.php"> 
-                  <span> <b class="text-light">Volver atrás</b> </span>
-                </a>
-              </li>
-
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#"> 
                   <span> <b class="text-light">La conferencia</b> </span>
@@ -44,4 +38,4 @@
           </div>
         </div>
       </nav>
-</header>
+    </header>

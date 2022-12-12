@@ -39,6 +39,7 @@ const registerUser = async() =>{
         type: 'post',
         data: {method: 'addUser', email: email.value, password: password.value, confirmPassword: confirmPassword.value},
         success: function(response){
+            console.log(response);
             
             const res = JSON.parse(response);
             Swal.fire({

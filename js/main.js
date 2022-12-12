@@ -58,10 +58,11 @@ const logout = async() =>{
                 console.log(response);
                 const res = JSON.parse(response);
                 if(res.ok){
-                    localStorage.removeItem("token");
+                 /*    localStorage.removeItem("token"); */
                 }
                
             }, error: function(xhr, status, error){
+                console.log(error)
                 Swal.fire({
                     title: '¡Error!',
                     text: 'Algo ha salido mal, pero no te preocupes, ¡estamos arreglándolo!',
