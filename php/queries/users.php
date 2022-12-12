@@ -35,9 +35,9 @@ function getUsersQuery($filter = '', $fields = '*', $bindParams = ''){
 
 }
 
-function updateUserQuery($data, $fields = '', $bindParams = ''){
+function updateUserQuery($data, $fields = '', $bindParams = '', $filter = 'id=?'){
     $mysqli = connection();
-   
+
     try {
         
         $stmt = $mysqli -> prepare("SELECT email, id FROM person WHERE email=?");
@@ -46,8 +46,8 @@ function updateUserQuery($data, $fields = '', $bindParams = ''){
         $result = $stmt->get_result();
         $rs = $result->fetch_assoc(); 
         
-        if(is_null($rs) || $data["id"] === $rs["id"]){
-            $stmt = $mysqli -> prepare("UPDATE person SET $fields WHERE id=?");
+        if(is_null($rs) || $data["id"] === $rs["id"] || $data["id"]==='tempPassword'){
+            $stmt = $mysqli -> prepare("UPDATE person SET $fields WHERE $filter");
             if(isset($bindParams) && !empty($bindParams)){
                 $dataTypes = $bindParams[0];
                 unset($bindParams[0]);

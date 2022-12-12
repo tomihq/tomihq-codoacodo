@@ -1,21 +1,29 @@
-
 document.addEventListener("DOMContentLoaded", () => {
     prepareSubmitEvent();
 });
 
-const email = document.querySelector("#email");
+const password = document.querySelector("#password");
+const confirmPassword = document.querySelector("#confirmPassword");
 
 const prepareSubmitEvent = () =>{
    
-
-    const buttonSubmit = document.querySelector("#button-login");
+    const buttonSubmit = document.querySelector("#button-submit");
     buttonSubmit.addEventListener(("click"), () =>{
-     const inputs = [email]
+     const inputs = [password, confirmPassword]
         let inputValid = 0; 
     
         inputs.forEach((input)=>{
             inputValid += handleInputChange(input);
         })
+
+        if(password.value !== confirmPassword.value){
+            Swal.fire({
+                title: '¡Oops!',
+                text: 'Las contraseñas no coinciden',
+                confirmButtonText: 'OK'
+              })
+              return;
+        }
     
 
         if(inputValid !== inputs.length){
@@ -27,24 +35,24 @@ const prepareSubmitEvent = () =>{
            return;  
         }
  
-        login();
+        changePassword();
     })
 }
 
-const login = async() =>{
+const changePassword = async() =>{
+    
     await $.ajax({
-        url: '../auth/login.php',
+        url: '../auth/changePassword.php',
         type: 'post',
-        data: {method: 'login', email: email.value, password: password.value},
+        data: {password: password.value, confirmPassword: confirmPassword.value},
         success: function(response){
-
-            const res = JSON.parse(response);
-            if(res.body.token){
+            console.log(response);
+             const res = JSON.parse(response);
+            if(res.ok){
                 localStorage.setItem("token", JSON.stringify(res.token));
-                window.location.href = res.body.tempPassword==1?"/tomihq-codoacodo/php/auth/changePassword.php":"/tomihq-codoacodo/";
-                 
+                 window.location.href = "/tomihq-codoacodo/php/auth/login.php";
             }
-            
+           
         }, error: function(xhr, status, error){
             Swal.fire({
                 title: '¡Error!',
