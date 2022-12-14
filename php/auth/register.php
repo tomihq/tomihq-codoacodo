@@ -67,6 +67,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../styles.css" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -76,9 +78,9 @@
 
      <?php require("../UI/header.php") ?>
 
-    <main class="main-container p-4 bg-dark text-center">
-      <h1 class="px-5 font-bold text-white">CODO A CODO</h1>
-      <h2 class="px-5 font-weight-bold text-white mb-5">Regístrese y obtenga beneficios.</h2>
+    <main class="main-container p-4 bg-dark text-center" id="register-main">
+      <h1 class="px-5 font-bold text-black">CODO A CODO</h1>
+      <h2 class="px-5 font-weight-bold text-black mb-5">Regístrese y obtenga beneficios.</h2>
       <section class="d-flex flex-column flex-md-row px-5 p-md-5  justify-content-center align-items-center gap-4">
         <div >
             <picture>
@@ -86,7 +88,7 @@
               <img src="../../img/cat.jpg" class="img-fluid" alt="cat with blue eyes looking the camera" width="400" height="400">
         </div>
 
-        <form id="register-form" class="mt-2 ms-md-4 px-md-4 mt-md-0 text-start">
+        <form id="register-form" class="mt-2 ms-md-4 p-4 mt-md-0 text-start bg-dark  rounded">
             <h3 class="text-white mb-4 font-weight-bold">Ingrese sus datos</h3>
             <div class="form-group row mb-4 text-white">
                 <label for="inputEmail3" class="col-sm-3 col-form-label">Email</label>

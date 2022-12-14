@@ -50,6 +50,9 @@ function login(){
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../styles.css" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -59,9 +62,9 @@ function login(){
 
      <?php require("../UI/header.php") ?>
 
-    <main class="main-container p-4 bg-dark text-center">
-      <h1 class="px-5 font-bold text-white">CODO A CODO</h1>
-      <h2 class="px-5 font-weight-bold text-white mb-5">Inicie sesión</h2>
+    <main class="main-container p-4 text-center" id="login-main">
+      <h1 class="px-5 font-bold text-black">CODO A CODO</h1>
+      <h2 class="px-5 font-weight-bold text-black mb-5">Inicie sesión</h2>
       <section class="d-flex flex-column flex-md-row px-5 p-md-5  justify-content-center align-items-center gap-4">
         <div >
             <picture>
@@ -70,7 +73,7 @@ function login(){
               
         </div>
 
-        <form id="register-form" class="mt-2 ms-md-4 px-md-4 mt-md-0 text-start">
+        <form id="register-form" class="mt-2 ms-md-4 p-4 mt-md-0 text-start bg-dark  rounded">
             <h3 class="text-white mb-4 font-weight-bold">Ingrese sus datos</h3>
             <div class="form-group row mb-4 text-white">
                 <label for="inputEmail3" class="col-sm-4 col-form-label">Email</label>
@@ -87,12 +90,14 @@ function login(){
             </div>
             
             
-            <div class="col-sm-10 d-flex justify-content-center align-items-center mt-5 mt-md-0">
-              <button type="button" class="btn btn-primary w-50 ms-md-5" id="button-login">Iniciar Sesión</button>
+            <div class="col-sm-10 d-flex justify-content-right align-items-right mt-5 mb-4 mt-md-0">
+              <button type="button" class="btn btn-primary " id="button-login">Iniciar Sesión</button>
             </div>
+
+            <a href="./register.php" class="text-white ms-1">Registrarse</a>
         </form>
 
-        <a href="./register.php">Registrarse</a>
+       
     
       </section>
       

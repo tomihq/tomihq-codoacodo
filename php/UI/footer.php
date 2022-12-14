@@ -1,5 +1,5 @@
 <footer
-          class="text-center text-lg-start text-white mt-5"
+          class="text-center text-lg-start text-white"
           style="background-color: #1c2331"
           >
   
@@ -19,10 +19,10 @@
       <div class="container-fluid mt-4  mb-4  text-center">
            <div class="container-fluid d-flex justify-content-between align-items-center p-0 text-center container-sm footer-container" >
         
-            <span class="text-uppercase fw-bold">Preguntas Frecuentes</span>
-            <span class="text-uppercase fw-bold">Contáctanos</span>
-            <span class="text-uppercase fw-bold">Prensa</span>
-            <span class="text-uppercase fw-bold">Conferencias</span>
+            <span class="text-uppercase fw-bold" role="button">Preguntas Frecuentes</span>
+            <span class="text-uppercase fw-bold" role="button">Contáctanos</span>
+            <span class="text-uppercase fw-bold" role="button">Prensa</span>
+            <span class="text-uppercase fw-bold" role="button">Conferencias</span>
             <a class="text-uppercase fw-bold text-decoration-none" href="/tomihq-codoacodo/php/solicitudes.php"><strong class="text-white " alt="Link para iniciar sesión">Listado de postulaciones</strong></a>
             <a class="text-uppercase fw-bold text-decoration-none" href="/tomihq-codoacodo/php/auth/login.php"><strong class="text-white " alt="Link para iniciar sesión">Iniciar Sesión</strong></a>
             <a class="text-uppercase fw-bold text-decoration-none" id="logout-a" role="button" alt="Link para cerrar sesión"><strong class="text-white ">Cerrar Sesión</strong></a>

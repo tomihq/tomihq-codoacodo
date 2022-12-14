@@ -1,6 +1,15 @@
-document.querySelector("#buyTickets").addEventListener("click", (e) =>{
-    window.location = 'tickets.php';
-})
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelector("#buyTickets").addEventListener("click", (e) =>{
+        window.location = 'tickets.php';
+    })
+    document.querySelector("#codoacodo-container-logo").addEventListener("click", () =>{
+        window.location = "/tomihq-codoacodo/";
+    })
+});
+
+
+
+
 
 const name = document.querySelector("#name");
 const surname = document.querySelector("#surname");

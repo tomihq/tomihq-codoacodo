@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="conferencia de codo a codo con los mejores oradores, inscribite">
     <meta name="title" content="Conferencia Codo a Codo 2022">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <title>Codo a Codo - tomihq</title>
     
     <?php  require("./php/UI/globalstyles.php")?>
@@ -31,7 +33,10 @@
                       <p class="text-right text-sm-end">  Bs As llega por primera vez a Argentina. Un evento para compartir con  nuestra comunidad el conocimiento y experiencia de los expertos que están creando el futuro de Internet. Ven a conocer a miembros del evento, a otros estudiantes de Codo a Codo y los oradores de primer nivel que tenemos para tí. Te esperamos!</p>
                       <div class="row d-flex justify-content-center">
                         <div class="mt-2 d-flex flex-column flex-sm-row justify-content-center gap-1 ">
-                          <button class="mb-4 btn border-light text-light mt-2 m-lg-0">Quiero ser orador</button>
+                          <button class="mb-4 btn border-light text-light mt-2 m-lg-0">
+                            
+                            <a href="#contact-form"class="text-white text-decoration-none"> Quiero ser orador</a>
+                          </button>
                           <button id="buyTickets" class="mb-4 btn  text-light mt-2 m-lg-0 btn-success">Comprar tickets</button>
                         </div>
                       </div>
@@ -117,7 +122,7 @@
                 </picture>
             </div>
            
-            <div class="col-sm-12 col-lg-7 p-0 bg-gray">
+            <div class="col-sm-12 col-lg-7 p-0 bg-gray" id="date-time">
               <div class="ms-3 mt-3 me-3 text-light d- flex flex-col gap-2">
                 <h1> <b>Bs As - Octubre</b></h1>
                 <p>  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui accusantium excepturi ducimus perspiciatis est culpa sed quam exercitationem! Debitis repellat libero magnam explicabo ipsam earum harum ullam distinctio, rem aspernatur?</p>
@@ -166,7 +171,7 @@
                   </div>
                   <button 
                     type="button"
-                    class="btn bg-success text-light mt-2"
+                    class="btn bg-success text-light mt-2 mb-5"
                     id="btn-form"
                   >Enviar</button>
               </div>
