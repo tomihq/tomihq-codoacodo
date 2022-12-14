@@ -1,3 +1,75 @@
+<?php
+ require('./php/conexion.php');
+require('./php/queries/users.php');
+require('./php/queries/category.php');
+require('./php/queries/tickets.php');
+require('./php/queries/ticket_person.php');
+
+if((isset($_POST["name"]) && isset($_POST["surname"]) && isset($_POST["email"]) && isset($_POST["quantity"]))
+){
+  createTicket();
+}
+
+function createTicket(){
+  $name = $_POST["name"];
+  $surname = $_POST["surname"];
+  $email = trim($_POST["email"]);
+  $quantity = $_POST["quantity"];
+  $category = trim($_POST["category"]) ?? 'no-category';
+
+  $result = getUsersQuery("WHERE email=?", 'email, id', ["s", $email]);
+  $user = $result->fetch_assoc(); 
+
+  if(is_null($user)){
+      //Se le asigna una contraseña temporal al usuario.
+      $password = password_hash(123456, PASSWORD_DEFAULT);
+      $person = array($name, $surname, $email, $password, 1);
+      $uuid = createUserQuery('id, name, surname, email, password, tempPassword', '?, ?, ?, ?, ?, ?', 'sssssi', $person);  
+  }else{
+      $uuid = $user["id"];
+     
+  }
+
+  $result = getCategories("WHERE slug=?", "slug, discount", ["s", $category]);
+  $category = $result->fetch_assoc(); 
+
+  //Si multiplico por uno es lo mismo que nada.
+  $discount = 1;
+  if(is_null($category)){
+    echo json_encode(array("ok" => false, "title" => 'Oops', "msg" =>"La categoría no existe"));
+  }else{
+    $discount = $category["discount"];
+  }
+
+  //Es el unico que se va a utilizar, el de codo a codo.
+  $event = 1; 
+  $result = getTicket("WHERE id=?", "baseprice", ["i", $event]);
+  $ticket = $result->fetch_assoc(); 
+
+  //Por defecto le damos 200 ya que es el precio base del unico evento a manejar.
+  $ticketPrice = 200; 
+  if(is_null($ticketPrice)){
+    echo json_encode(array("ok" => false, "title" => 'Oops', "msg" =>"El ticket no existe"));
+  }else{
+    $ticketPrice = $ticket["baseprice"];
+  }
+  $price = ($ticketPrice * intval($quantity));
+  $totalDiscount = ($ticketPrice * intval($quantity)) * $discount;
+  $data = array($event, $uuid, ( $price-$totalDiscount));
+
+  $ticket_person = createTicketPerson('id, ticket, idPerson, price', '?, ?, ?, ?', 'sssd', $data);
+  $ticket_person["ok"]
+  ?json_encode(array("ok" => true, "title" => "Compra finalizada", "msg" => "Recuerda iniciar sesión con tu contraseña y dirigirte a la página de 'mis tickets' para poder ver tu compra."))
+  :json_encode(array("ok" => false, "title" => "Error", "msg" => "Oops, hubo un problema, pero no te preocupes, lo estamos arreglando"));
+
+
+  exit;
+}
+
+
+  
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -103,7 +175,6 @@
                           <section class="d-flex flex-column mt-4 p-0 flex-md-row container-buttons-end">
                                 <button id="btnDelete" class="btn bg-success text-light mt-2 col-md-6">Borrar</button>
                                 <button id="btnSummary" class="btn bg-success text-light mt-2 col-md-6">Resumen</button>
-                         
                           </section>
 
                 </div>
@@ -135,6 +206,7 @@
       <?php require('./php/UI/footer.php'); ?>
       <script src="https://kit.fontawesome.com/53b8f41532.js" crossorigin="anonymous"></script>
       <script  type="text/javascript" src="./js/main.js"></script>
+      <script  type="text/javascript" src="./js/tickets.js"></script>
 
     
 </body>

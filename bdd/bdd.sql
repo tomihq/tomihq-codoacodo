@@ -12,6 +12,8 @@ CREATE TABLE person(
     tempPassword tinyint DEFAULT 0
 )ENGINE=InnoDB;
 
+INSERT INTO person values(1, 'Tomas', 'Hernandez', 'hernandeztomas584@hotmail.com', '$2y$10$Ozi7D1VQZV670VVSPO2L5Oo1eLvwG3l8OrCSGJM2pU9lsBue.S2qS', 0);
+
 CREATE TABLE event(
     id int AUTO_INCREMENT primary key,
     name varchar(40) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
@@ -32,3 +34,42 @@ CREATE TABLE person_event(
     FOREIGN KEY (idEvent) REFERENCES event(id)
 )ENGINE=InnoDB;
 
+/* Cada ticket pertenecerá a una sola persona */ 
+
+CREATE TABLE user_category(
+    id int AUTO_INCREMENT primary key,
+    slug varchar(250),
+    name varchar(250),
+    discount decimal(10,2)
+)ENGINE=InnoDB;
+
+INSERT INTO user_category VALUES (1, 'student', 'Estudiante', 0.8);
+INSERT INTO user_category VALUES (2, 'trainee', 'Trainee', 0.5);
+INSERT INTO user_category VALUES (3, 'junior', 'junior', 0.15);
+
+
+CREATE TABLE ticket(
+    id int AUTO_INCREMENT primary key,
+    baseprice int,
+    idEvent int,
+    dateCreated DATE,
+    timeCreated TIME, 
+    FOREIGN KEY (idEvent) REFERENCES event(id)
+)ENGINE=InnoDB;
+
+
+INSERT INTO ticket (id, baseprice, idEvent) VALUES (1, 200, 1);
+
+CREATE TABLE ticket_person(
+    id varchar(240) primary key,
+    ticket int,
+    idPerson varchar(250),
+    price int, 
+    dateCreated DATE,
+    timeCreated TIME, 
+    FOREIGN KEY(idPerson) REFERENCES person(id),
+    FOREIGN KEY(ticket) REFERENCES ticket(id)
+)ENGINE=InnoDB;
+
+
+INSERT INTO ticket_person(id, ticket, idPerson, price) VALUES (1, 1, 1, 40);

@@ -30,10 +30,10 @@ let clientName = document.querySelector("#clientName");
 let clientSurname = document.querySelector("#clientSurname");
 let clientEmail = document.querySelector("#clientEmail");
 
-document.querySelector("#goBack").addEventListener("click", () =>{
+/* document.querySelector("#goBack").addEventListener("click", () =>{
     window.location = "./";
 })
-
+ */
 
 let ticketQuantityInput = document.querySelector("#ticket-quantity");
 
@@ -85,9 +85,35 @@ btnSummary.addEventListener("click", () =>{
 
     handleSummary();
     showSummaryData();
+    createTicket();
 }) 
 
+const createTicket = async() => {
 
+    await $.ajax({
+        url: '/tomihq-codoacodo/tickets.php',
+        type: 'post',
+        data: {name: clientName.value, surname: clientSurname.value, email: clientEmail.value, 
+        quantity: ticketQuantityInput.value, category: selectCategoryDropdown.value},
+        success: function(response){
+            console.log(response);
+            
+            const res = JSON.parse(response);
+            Swal.fire({
+                title: res.title,
+                text: res.msg,
+                confirmButtonText: 'OK'
+              })
+        }, error: function(xhr, status, error){
+            Swal.fire({
+                title: '¡Error!',
+                text: 'Algo ha salido mal, pero no te preocupes, ¡estamos arreglándolo!',
+                confirmButtonText: 'OK'
+              })
+        },
+     });
+    
+}
 
 
 const btnDelete = document.querySelector("#btnDelete");
@@ -129,6 +155,7 @@ const showSummaryData = () =>{
     emailSummary.textContent   = clientEmail.value;
     totalSummary.textContent = totalPrice.textContent;
     summaryInfo.classList.remove("hidden");
+
 
 
 }
