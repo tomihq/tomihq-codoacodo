@@ -55,6 +55,10 @@
        
 
         <?php
+          if(is_null($eventsFound->fetch_assoc())){
+            ?> <h1>¡Todavía nadie se ha postulado al evento!</h1> <?php
+          }
+          else{
                 foreach ($eventsFound as $key => $event) {
         ?>
                      <tr>
@@ -100,6 +104,7 @@
                 
         <?php
                                                          }
+                                                        }
         ?>
       
         </table>

@@ -32,7 +32,7 @@
               </li>
 
               <li class="nav-item  d-none d-md-block">
-                <a class="nav-link" href="./tickets.php"><span class="txt-green"> Comprar tickets</span></a>
+                <a class="nav-link" href="/tomihq-codoacodo/tickets.php"><span class="txt-green"> Comprar tickets</span></a>
               </li>
               
 

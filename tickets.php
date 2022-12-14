@@ -4,6 +4,7 @@ require('./php/queries/users.php');
 require('./php/queries/category.php');
 require('./php/queries/tickets.php');
 require('./php/queries/ticket_person.php');
+require('./php/helpers/global-config.php');
 
 if((isset($_POST["name"]) && isset($_POST["surname"]) && isset($_POST["email"]) && isset($_POST["quantity"]))
 ){
@@ -31,14 +32,14 @@ function createTicket(){
   }
 
   $result = getCategories("WHERE slug=?", "slug, discount", ["s", $category]);
-  $category = $result->fetch_assoc(); 
+  $foundCategory = $result->fetch_assoc(); 
 
   //Si multiplico por uno es lo mismo que nada.
   $discount = 1;
-  if(is_null($category)){
-    echo json_encode(array("ok" => false, "title" => 'Oops', "msg" =>"La categoría no existe"));
+  if(is_null($foundCategory)){
+    echo json_encode(array("ok" => false, "title" => 'Oops', "msg" =>"La categoría no existe, no se aplicara ningun descuento"));
   }else{
-    $discount = $category["discount"];
+    $discount = $foundCategory["discount"];
   }
 
   //Es el unico que se va a utilizar, el de codo a codo.
@@ -55,7 +56,12 @@ function createTicket(){
   }
   $price = ($ticketPrice * intval($quantity));
   $totalDiscount = ($ticketPrice * intval($quantity)) * $discount;
-  $data = array($event, $quantity, $uuid, ($price-$totalDiscount), date('Y-m-d'), date("H:i:s"));
+  $totalPrice = 200;
+
+  
+  $totalPrice = $discount===1?$price:$price-$totalDiscount;
+
+  $data = array($event, $quantity, $uuid, $totalPrice, date('Y-m-d'), date("H:i:s"));
 
   $ticket_person = createTicketPerson('id, ticket, ticketQuantity, idPerson, price, dateCreated, timeCreated', '?, ?, ?, ?, ?, ?, ?', 'ssisdss', $data);
   $msg = $ticket_person["ok"]
@@ -209,7 +215,7 @@ function createTicket(){
 
       <?php require('./php/UI/footer.php'); ?>
       <script src="https://kit.fontawesome.com/53b8f41532.js" crossorigin="anonymous"></script>
-      <script  type="text/javascript" src="./js/main.js"></script>
+   
       <script  type="text/javascript" src="./js/tickets.js"></script>
 
     

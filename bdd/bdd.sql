@@ -60,6 +60,9 @@ CREATE TABLE ticket(
 
 INSERT INTO ticket (id, baseprice, idEvent) VALUES (1, 200, 1);
 
+/* Si bien hay que mantener la integridad referencial (y NO ELIMINAR filas sino utilizar un booleano como active = true/false para determinar si un usuario está "eliminado" o no.), Aquí podemos ver un ejemplo de eliminación en cascada.
+Esto significa que si el ticket_person tiene una persona, entonces si la persona se elimina, el registro de ticket_person se elimina porque la persona ya no existe.
+*/
 CREATE TABLE ticket_person(
     id varchar(240) primary key,
     ticket int,

@@ -11,7 +11,7 @@
 
     $email = trim($_SESSION["email"]);
 
-    $ticketsFound = getTicketPersonDataByEmail('e.name, tp.price, tp.ticketQuantity, tp.dateCreated, tp.timeCreated', $email);
+    $ticketsFound = getTicketPersonDataByEmail('e.name, tp.price, tp.ticketQuantity, tp.dateCreated, tp.timeCreated', $email) ?? 0;
 
 ?>
 
@@ -48,6 +48,11 @@
         
 
             <?php
+                   
+                    if(is_null($ticketsFound->fetch_assoc())){
+                        ?> <h1>¡Todavía no compraste ningún ticket!</h1> <?php
+                    }
+                    else{
                     foreach ($ticketsFound as $key => $ticket) {
             ?>
                         <tr>
@@ -90,6 +95,7 @@
                     
             <?php
                                                             }
+                                                        }
             ?>
         
             </table>

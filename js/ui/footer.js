@@ -8,9 +8,9 @@ const logout = async() =>{
     let token = localStorage.getItem("token");
     if(token){
         await $.ajax({
-            url: './php/auth/logout.php',
+            url: '/tomihq-codoacodo/php/auth/logout.php',
             type: 'post',
-            data: {name: name.value, surname: surname.value, email: email.value, talkAbout: talkAbout.value},
+            data: {},
             success: function(response){
                 const res = JSON.parse(response);
                 if(res.ok){
