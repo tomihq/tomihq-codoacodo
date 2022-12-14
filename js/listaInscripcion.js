@@ -1,6 +1,7 @@
 
 
 const prepareDeleteUsersAction = () => {
+
     const users = document.querySelectorAll(".deleteUser");
     users.forEach((user)=>{
             user.addEventListener("click", () =>{
@@ -14,6 +15,7 @@ const prepareDeleteUsersAction = () => {
                     confirmButtonText: 'Sí, quiero eliminar a este usuario'
                   }).then((result) => {
                     if (result.isConfirmed) {
+                        
                         deleteUser(user.id);
                     }
                   })
@@ -35,7 +37,7 @@ const deleteUser = (id) =>{
         alert('Something is wrong');
         },
         success: function(data) {
-            
+            console.log(data);
             const res = JSON.parse(data);
             if(res.ok){
                 Swal.fire({

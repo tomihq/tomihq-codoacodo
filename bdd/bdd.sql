@@ -30,7 +30,7 @@ CREATE TABLE person_event(
     inscriptionDate DATE,
     inscriptionTime TIME,
     description varchar(120) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-    FOREIGN KEY (idPerson) REFERENCES person(id),
+    FOREIGN KEY (idPerson) REFERENCES person(id) ON DELETE CASCADE,
     FOREIGN KEY (idEvent) REFERENCES event(id)
 )ENGINE=InnoDB;
 
@@ -63,13 +63,14 @@ INSERT INTO ticket (id, baseprice, idEvent) VALUES (1, 200, 1);
 CREATE TABLE ticket_person(
     id varchar(240) primary key,
     ticket int,
+    ticketQuantity int,
     idPerson varchar(250),
     price int, 
     dateCreated DATE,
     timeCreated TIME, 
-    FOREIGN KEY(idPerson) REFERENCES person(id),
+    FOREIGN KEY(idPerson) REFERENCES person(id) ON DELETE CASCADE,
     FOREIGN KEY(ticket) REFERENCES ticket(id)
 )ENGINE=InnoDB;
 
 
-INSERT INTO ticket_person(id, ticket, idPerson, price) VALUES (1, 1, 1, 40);
+INSERT INTO ticket_person(id, ticket, ticketQuantity, idPerson, price) VALUES (1, 1, 10, 1, 400);

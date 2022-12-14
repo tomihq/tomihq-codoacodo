@@ -42,6 +42,7 @@
      <?php require("./UI/header.php") ?>
 
     <main class="main-container p-4">
+    <div class="overflow-auto">
         <table class="table table-striped table-hover">
         <thead>
             <th>Nombre </th>
@@ -91,7 +92,7 @@
         ?>
       
         </table>
-      
+      </div>
     </main>
    
     <?php

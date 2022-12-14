@@ -55,12 +55,16 @@ function createTicket(){
   }
   $price = ($ticketPrice * intval($quantity));
   $totalDiscount = ($ticketPrice * intval($quantity)) * $discount;
-  $data = array($event, $uuid, ( $price-$totalDiscount));
+  $data = array($event, $quantity, $uuid, ($price-$totalDiscount), date('Y-m-d'), date("H:i:s"));
 
-  $ticket_person = createTicketPerson('id, ticket, idPerson, price', '?, ?, ?, ?', 'sssd', $data);
-  $ticket_person["ok"]
-  ?json_encode(array("ok" => true, "title" => "Compra finalizada", "msg" => "Recuerda iniciar sesión con tu contraseña y dirigirte a la página de 'mis tickets' para poder ver tu compra."))
+  $ticket_person = createTicketPerson('id, ticket, ticketQuantity, idPerson, price, dateCreated, timeCreated', '?, ?, ?, ?, ?, ?, ?', 'ssisdss', $data);
+  $msg = $ticket_person["ok"]
+  ?json_encode(array("ok" => true, "title" => "Compra finalizada", "msg" => "Recuerda iniciar sesión con tu contraseña y dirigirte a la página de 'mis tickets' para poder ver tu compra.
+  En caso de no haberte registrado anteriormente, intentá ingresar con la contraseña '123456' sin las comillas.
+  "))
   :json_encode(array("ok" => false, "title" => "Error", "msg" => "Oops, hubo un problema, pero no te preocupes, lo estamos arreglando"));
+
+  echo $msg;
 
 
   exit;

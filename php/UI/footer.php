@@ -22,7 +22,7 @@
             <span class="text-uppercase fw-bold" role="button">Preguntas Frecuentes</span>
             <span class="text-uppercase fw-bold" role="button">Contáctanos</span>
             <span class="text-uppercase fw-bold" role="button">Prensa</span>
-            <span class="text-uppercase fw-bold" role="button">Tickets vendidos</span>
+            <a class="text-uppercase fw-bold text-decoration-none" href="/tomihq-codoacodo/php/tickets/my-tickets.php"><strong class="text-white " alt="Link para iniciar sesión">Mis tickets</strong></a>
             <a class="text-uppercase fw-bold text-decoration-none" href="/tomihq-codoacodo/php/solicitudes.php"><strong class="text-white " alt="Link para iniciar sesión">Listado de postulaciones</strong></a>
             <a class="text-uppercase fw-bold text-decoration-none" href="/tomihq-codoacodo/php/auth/login.php"><strong class="text-white " alt="Link para iniciar sesión">Iniciar Sesión</strong></a>
             <a class="text-uppercase fw-bold text-decoration-none" id="logout-a" role="button" alt="Link para cerrar sesión"><strong class="text-white ">Cerrar Sesión</strong></a>
