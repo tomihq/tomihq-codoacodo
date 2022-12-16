@@ -99,6 +99,6 @@
               require('./UI/footer.php');                                          
     ?>
     <script src="https://kit.fontawesome.com/53b8f41532.js" crossorigin="anonymous"></script>
-    <script  type="text/javascript" src="../js/listaInscripcion.js"></script>
+    <script  type="text/javascript" src="/js/listaInscripcion.js"></script>
   </body>
 </html>

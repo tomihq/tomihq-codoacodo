@@ -91,7 +91,7 @@ btnSummary.addEventListener("click", () =>{
 const createTicket = async() => {
 
     await $.ajax({
-        url: '/tomihq-codoacodo.000webhostapp.com/tickets.php',
+        url: './tickets.php',
         type: 'post',
         data: {name: clientName.value, surname: clientSurname.value, email: clientEmail.value, 
         quantity: ticketQuantityInput.value, category: selectCategoryDropdown.value},

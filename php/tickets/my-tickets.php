@@ -6,7 +6,7 @@
     } 
 
     if(!isset($_SESSION["email"])){
-        header("Location: /tomihq-codoacodo.000webhostapp.com/php/auth/login.php");
+        header("Location: /php/auth/login.php");
     }
 
     $email = trim($_SESSION["email"]);

@@ -6,14 +6,8 @@ require('../person.php');
 require('../queries/users.php');
 require('../queries/auth.php');
 require('../helpers/index.php');
-if(!isset($_SESSION)){
-    session_start();
-}
+global $_SESSION;
 
-if(!isset($_COOKIE["token"]) && !isset($_SESSION["email"])){
-    header('Location: /tomihq-codoacodo.000webhostapp.com/');
-    die();
-}
 
 if(isset($_POST["password"]) && isset($_POST["confirmPassword"])){
     $password = $_POST["password"];

@@ -10,7 +10,7 @@
      global $userFilter; 
 
     /*  if(!isset($_COOKIE["token"]) && !$_COOKIE["token"]){
-        header('Location: /tomihq-codoacodo.000webhostapp.com/');
+        header('Location: ./');
         die();
       } */
 

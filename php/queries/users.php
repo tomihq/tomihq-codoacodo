@@ -3,12 +3,21 @@ require(__DIR__ .'/../uuid.php');
 
 function createUserQuery($fields, $paramsAmount, $bindParams, $person){
         $mysqli = connection();
+        $stmt = '';
 
         $uuid = UUID::v4();
-        $stmt = $mysqli -> prepare("INSERT INTO person ($fields) 
-        VALUES ($paramsAmount)");
-        $stmt -> bind_param($bindParams, $uuid, ...$person);
-        $stmt->execute();
+        if (!$stmt = $mysqli->prepare("INSERT INTO person ($fields) VALUES ($paramsAmount)")) {
+            echo json_encode(array("data" => $stmt->error));
+        }
+
+        if (!$res = $stmt->bind_param($bindParams, $uuid, ...$person)) {
+            echo json_encode(array("data2" => $stmt->error));
+        }
+
+        if (!$res = $stmt->execute()) {
+            echo json_encode(array("data3" => $stmt->error));
+        }
+
 
         return $uuid;
 
@@ -37,6 +46,7 @@ function getUsersQuery($filter = '', $fields = '*', $bindParams = ''){
 
 function updateUserQuery($data, $fields = '', $bindParams = '', $filter = 'id=?'){
     $mysqli = connection();
+    
 
     try {
         
@@ -52,6 +62,7 @@ function updateUserQuery($data, $fields = '', $bindParams = '', $filter = 'id=?'
                 $dataTypes = $bindParams[0];
                 unset($bindParams[0]);
                 $stmt -> bind_param($dataTypes, ...$bindParams);
+               
             }        
             $status = $stmt -> execute();
             echo json_encode(array("ok"=>true, "title" => "¡Proceso exitoso!", "msg"=> "Se ha editado el usuario correctamente"));

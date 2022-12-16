@@ -8,10 +8,11 @@ const logout = async() =>{
     let token = localStorage.getItem("token");
     if(token){
         await $.ajax({
-            url: '/tomihq-codoacodo.000webhostapp.com/php/auth/logout.php',
+            url: '../../php/auth/logout.php',
             type: 'post',
             data: {},
             success: function(response){
+                console.log(response)
                 const res = JSON.parse(response);
                 if(res.ok){
                     localStorage.removeItem("token");

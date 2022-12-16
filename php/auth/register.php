@@ -24,10 +24,11 @@
   
       if(is_null($user)){
           $uuid = createUserQuery('id, email, password', '?, ?, ?', 'sss', $person);   
+          
           if(!is_null($uuid)) {
             $data = array("email" => $email, "password" => $password);
             $res = loginQuery($data);
-            print $res?json_encode(array("token" => $res, "success" => true,"title"=>"¡Atención!", "msg" => "Te has registrado satisfactoriamente.")):json_encode(array("ok" => false));
+            print $res?json_encode(array("token" => $res["body"]["token"], "success" => true,"title"=>"¡Atención!", "msg" => "Te has registrado satisfactoriamente.")):json_encode(array("ok" => false));
 
             exit;
           }

@@ -5,12 +5,21 @@ function createPersonEventQuery($data){
     
     $mysqli = connection();
     try {
-        $stmt = $mysqli -> prepare("INSERT INTO person_event (idPerson, idEvent, inscriptionDate, inscriptionTime, description)
-        VALUES (?, ?, ?, ?, ?)");
+         if (!$stmt = $mysqli->prepare("INSERT INTO person_event (idPerson, idEvent, inscriptionDate, inscriptionTime, description)
+         VALUES (?, ?, ?, ?, ?)")) {
+            echo json_encode(array("data" => $stmt->error));
+        }
         $actualDate = date('Y-m-d');
         $actualTime = date("H:i:s");
-        $stmt -> bind_param("sisss", $data["uuid"], $data["event"], $actualDate, $actualTime, $data["talkAbout"]);
-        $stmt->execute();
+
+        if (!$res = $stmt->bind_param("sisss", $data["uuid"], $data["event"], $actualDate, $actualTime, $data["talkAbout"])) {
+            echo json_encode(array("data2" => $stmt->error));
+        }
+
+        if (!$res = $stmt->execute()) {
+            echo json_encode(array("data3" => $stmt->error));
+        }
+
         echo json_encode(array("success" => true, "title"=> "¡Proceso realizado con éxito!", "msg" => "Hemos recibido tu solicitud. ¡Gracias!"));
     } catch (\Throwable $th) {
         echo json_encode(array("success"=>false, "title" => "Oops", "msg" => "Algo salió mal."));

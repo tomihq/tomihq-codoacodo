@@ -33,14 +33,15 @@ const prepareSubmitEvent = () =>{
 
 const login = async() =>{
     await $.ajax({
-        url: '../auth/login.php',
+        url: './login.php',
         type: 'post',
         data: {method: 'login', email: email.value, password: password.value},
         success: function(response){
+            console.log(response);
             const res = JSON.parse(response);
             if(res.body.token){
-                localStorage.setItem("token", JSON.stringify(res.token));
-                window.location.href = res.body.tempPassword==1?"/tomihq-codoacodo.000webhostapp.com/php/auth/changePassword.php":"/tomihq-codoacodo.000webhostapp.com/";
+                localStorage.setItem("token", JSON.stringify(res.body.token));
+                window.location.href = res.body.tempPassword==1?"../../php/auth/changePassword.php":"./";
                  
             }else{
                 Swal.fire({

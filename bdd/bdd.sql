@@ -5,8 +5,8 @@ USE id20003014_codoacodo;
 
 CREATE TABLE person(
 	id varchar(250) primary key,
-	name varchar(40) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-	surname varchar(40) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+	name varchar(40) CHARACTER SET latin1 COLLATE latin1_swedish_ci,
+	surname varchar(40) CHARACTER SET latin1 COLLATE latin1_swedish_ci,
 	email varchar(80) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
     password varchar(80) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
     tempPassword tinyint DEFAULT 0
@@ -16,7 +16,7 @@ INSERT INTO person values(1, 'Tomas', 'Hernandez', 'hernandeztomas584@hotmail.co
 
 CREATE TABLE event(
     id int AUTO_INCREMENT primary key,
-    name varchar(40) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+    name varchar(40) CHARACTER SET latin1 COLLATE latin1_swedish_ci,
     date DATE
 )ENGINE=InnoDB;
 

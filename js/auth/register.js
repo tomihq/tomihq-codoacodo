@@ -45,18 +45,17 @@ const prepareSubmitEvent = () =>{
 const registerUser = async() =>{
     
     await $.ajax({
-        url: '../auth/register.php',
+        url: './register.php',
         type: 'post',
         data: {method: 'addUser', email: email.value, password: password.value, confirmPassword: confirmPassword.value},
         success: function(response){
-            
+            console.log(response)
             const res = JSON.parse(response);
             if(res.token){
                 localStorage.setItem("token", JSON.stringify(res.token));
-                 window.location.href = "/tomihq-codoacodo.000webhostapp.com/";
+                 window.location.href = "/";
             }
-           
-              window.location.href = "/tomihq-codoacodo.000webhostapp.com/";
+            /*   window.location.href = "/"; */
         }, error: function(xhr, status, error){
             Swal.fire({
                 title: '¡Error!',
