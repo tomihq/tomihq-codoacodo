@@ -8,7 +8,7 @@ require('../queries/auth.php');
 require('../helpers/index.php');
 
 if(isset($_COOKIE["token"]) && $_COOKIE["token"]){
-  header('Location: /tomihq-codoacodo/');
+  header('Location: /tomihq-codoacodo.000webhostapp.com/');
   die();
 }
 

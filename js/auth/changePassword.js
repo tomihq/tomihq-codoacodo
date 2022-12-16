@@ -50,7 +50,7 @@ const changePassword = async() =>{
              const res = JSON.parse(response);
             if(res.ok){
                 localStorage.setItem("token", JSON.stringify(res.token));
-                 window.location.href = "/tomihq-codoacodo/php/auth/login.php";
+                 window.location.href = "/tomihq-codoacodo.000webhostapp.com/php/auth/login.php";
             }
            
         }, error: function(xhr, status, error){

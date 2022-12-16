@@ -8,7 +8,7 @@ const logout = async() =>{
     let token = localStorage.getItem("token");
     if(token){
         await $.ajax({
-            url: '/tomihq-codoacodo/php/auth/logout.php',
+            url: '/tomihq-codoacodo.000webhostapp.com/php/auth/logout.php',
             type: 'post',
             data: {},
             success: function(response){

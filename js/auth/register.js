@@ -53,10 +53,10 @@ const registerUser = async() =>{
             const res = JSON.parse(response);
             if(res.token){
                 localStorage.setItem("token", JSON.stringify(res.token));
-                 window.location.href = "/tomihq-codoacodo/";
+                 window.location.href = "/tomihq-codoacodo.000webhostapp.com/";
             }
            
-              window.location.href = "/tomihq-codoacodo/";
+              window.location.href = "/tomihq-codoacodo.000webhostapp.com/";
         }, error: function(xhr, status, error){
             Swal.fire({
                 title: '¡Error!',

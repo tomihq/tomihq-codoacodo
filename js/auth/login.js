@@ -40,7 +40,7 @@ const login = async() =>{
             const res = JSON.parse(response);
             if(res.body.token){
                 localStorage.setItem("token", JSON.stringify(res.token));
-                window.location.href = res.body.tempPassword==1?"/tomihq-codoacodo/php/auth/changePassword.php":"/tomihq-codoacodo/";
+                window.location.href = res.body.tempPassword==1?"/tomihq-codoacodo.000webhostapp.com/php/auth/changePassword.php":"/tomihq-codoacodo.000webhostapp.com/";
                  
             }else{
                 Swal.fire({

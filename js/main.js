@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location = 'tickets.php';
     })
     document.querySelector("#codoacodo-container-logo").addEventListener("click", () =>{
-        window.location = "/tomihq-codoacodo/";
+        window.location = "/tomihq-codoacodo.000webhostapp.com/";
     })
 });
 

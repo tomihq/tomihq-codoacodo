@@ -11,7 +11,7 @@ if(!isset($_SESSION)){
 }
 
 if(!isset($_COOKIE["token"]) && !isset($_SESSION["email"])){
-    header('Location: /tomihq-codoacodo/');
+    header('Location: /tomihq-codoacodo.000webhostapp.com/');
     die();
 }
 
