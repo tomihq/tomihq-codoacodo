@@ -2,9 +2,9 @@
 
 function connection(){
     $server = "localhost";
-    $user = "root";
+    $user = "id20003014_user";
     $password = "UsuarioRoot123!";
-    $database = "codoacodo";
+    $database = "id20003014_codoacodo";
 
     $mysqli = new mysqli($server, $user, $password, $database);
 

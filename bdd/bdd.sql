@@ -1,6 +1,6 @@
-DROP DATABASE if EXISTS codoacodo;
-CREATE DATABASE codoacodo;
-USE codoacodo;
+DROP DATABASE if EXISTS id20003014_codoacodo;
+CREATE DATABASE id20003014_codoacodo;
+USE id20003014_codoacodo;
 
 
 CREATE TABLE person(
