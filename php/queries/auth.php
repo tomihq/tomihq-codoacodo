@@ -1,6 +1,5 @@
 <?php
     function loginQuery($data){
-        global $_SESSION;
         $email = $data["email"];
         $password = $data["password"];
 
@@ -16,7 +15,7 @@
             $payload = array('email'=>$userFound["email"], 'exp'=>(time() + 60));
             $jwt = generate_jwt($headers, $payload);
             $_SESSION["email"] = $email;
-            $_SESSION["token"] = $jwt;
+            setcookie("token", $jwt, time()+3600, "/"); 
 
             
             if($userFound["tempPassword"]===1){

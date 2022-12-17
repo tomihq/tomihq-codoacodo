@@ -46,12 +46,10 @@ const changePassword = async() =>{
         type: 'post',
         data: {password: password.value, confirmPassword: confirmPassword.value},
         success: function(response){
-            console.log(response);
-           /*   const res = JSON.parse(response);
+              const res = JSON.parse(response);
             if(res.ok){
-                localStorage.setItem("token", JSON.stringify(res.token));
                  window.location.href = "../../php/auth/login.php";
-            } */
+            } 
            
         }, error: function(xhr, status, error){
             Swal.fire({

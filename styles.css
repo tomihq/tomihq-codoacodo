@@ -1,6 +1,5 @@
 *{
     font-family: 'Poppins', 'Montserrat', sans-serif;
-    overflow-x: hidden; 
 }
 
 h3{
@@ -100,9 +99,7 @@ b{
     gap: 1rem;
 }
 
-.form-edituser{
-    width: 500px !important;
-}
+
 
 .justify-content{
     justify-content: center;
@@ -200,6 +197,12 @@ b{
         width: 70%;
         left: 15vw;
         right: 0;
+    }
+}
+
+@media(min-width: 530px){
+    .form-edituser{
+        width: 500px !important;
     }
 }
 

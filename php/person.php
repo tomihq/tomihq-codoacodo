@@ -6,11 +6,6 @@
         protected $email;
 
         function __construct($name, $surname, $email){
-
-            if(is_null($name) || empty($name)){
-                $name = '';
-            }
-
             $this->name = $name;
             $this->surname = $surname;
             $this->email = $email;

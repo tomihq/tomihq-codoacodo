@@ -1,6 +1,7 @@
-
 <?php
-  
+if(!isset($_SESSION)){
+  session_start();
+}
     require('../conexion.php');
     require('../person.php');
     require('../queries/users.php');

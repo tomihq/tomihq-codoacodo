@@ -11,6 +11,7 @@
 
     $email = trim($_SESSION["email"]);
 
+
     $ticketsFound = getTicketPersonDataByEmail('e.name, tp.price, tp.ticketQuantity, tp.dateCreated, tp.timeCreated', $email) ?? 0;
 
 ?>

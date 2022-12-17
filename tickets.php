@@ -1,5 +1,5 @@
 <?php
- require('./php/conexion.php');
+require('./php/conexion.php');
 require('./php/queries/users.php');
 require('./php/queries/category.php');
 require('./php/queries/tickets.php');

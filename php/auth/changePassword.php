@@ -1,12 +1,14 @@
-
 <?php
+if(!isset($_SESSION)){
+  session_start();
+}
+
 
 require('../conexion.php');
 require('../person.php');
 require('../queries/users.php');
 require('../queries/auth.php');
 require('../helpers/index.php');
-global $_SESSION;
 
 
 if(isset($_POST["password"]) && isset($_POST["confirmPassword"])){
@@ -19,14 +21,7 @@ if(isset($_POST["password"]) && isset($_POST["confirmPassword"])){
     exit;
     
 }
-
-
-
-
-
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -56,9 +51,7 @@ if(isset($_POST["password"]) && isset($_POST["confirmPassword"])){
     
   </head>
   <body>    
-
      <?php require("../UI/header.php") ?>
-
      <main class="main-container p-4 bg-dark text-center" id="changepassword-main">
       <h1 class="px-5 font-weight-bold text-black">CODO A CODO</h1>
       <h2 class="px-5 font-weight-bold text-black mb-5">Cambie su contraseña.</h2>

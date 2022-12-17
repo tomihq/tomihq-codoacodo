@@ -15,24 +15,24 @@
             </li>
 
               <li class="nav-item d-none d-md-block">
-                <a class="nav-link active" aria-current="page" href="./"> 
+                <a class="nav-link active" aria-current="page" href="/"> 
                   <span> <b class="text-light">La conferencia</b> </span>
                 </a>
               </li>
               <li class="nav-item  d-none d-md-block">
-                <a class="nav-link" href="#speakers">  <span class="text-light">Los oradores</span></a>
+                <a class="nav-link" href="/#speakers">  <span class="text-light">Los oradores</span></a>
               </li>
              
               <li class="nav-item  d-none d-md-block">
-                <a class="nav-link" href="#date-time"><span class="text-light"> El lugar y la fecha</span></a>
+                <a class="nav-link" href="/#date-time"><span class="text-light"> El lugar y la fecha</span></a>
               </li>
 
               <li class="nav-item  d-none d-md-block">
-                <a class="nav-link" href="#contact-form"><span class="text-light"> Conviértete en orador</span></a>
+                <a class="nav-link" href="/#contact-form"><span class="text-light"> Conviértete en orador</span></a>
               </li>
 
               <li class="nav-item  d-none d-md-block">
-                <a class="nav-link" href="./tickets.php"><span class="txt-green"> Comprar tickets</span></a>
+                <a class="nav-link" href="/tickets.php"><span class="txt-green"> Comprar tickets</span></a>
               </li>
               
 

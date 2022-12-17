@@ -1,11 +1,17 @@
-
 <?php
-
+if(!isset($_SESSION)){
+  session_start();
+}
 require('../conexion.php');
 require('../person.php');
 require('../queries/users.php');
 require('../queries/auth.php');
 require('../helpers/index.php');
+
+if(isset($_COOKIE["token"]) && $_COOKIE["token"]){
+  header('Location: /');
+  die();
+}
 
 
 if(isset($_POST["method"]) && $_POST["method"]==='login') login();

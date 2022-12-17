@@ -37,11 +37,10 @@ const login = async() =>{
         type: 'post',
         data: {method: 'login', email: email.value, password: password.value},
         success: function(response){
-            console.log(response);
             const res = JSON.parse(response);
             if(res.body.token){
                 localStorage.setItem("token", JSON.stringify(res.body.token));
-                window.location.href = res.body.tempPassword==1?"../../php/auth/changePassword.php":"./";
+                window.location.href = res.body.tempPassword==1?"../../php/auth/changePassword.php":"https://tomihq-codoacodo.000webhostapp.com/";
                  
             }else{
                 Swal.fire({
